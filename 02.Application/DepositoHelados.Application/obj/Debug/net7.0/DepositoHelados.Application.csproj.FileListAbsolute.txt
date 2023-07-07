@@ -1,0 +1,12 @@
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Application.deps.json
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Application.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Application.pdb
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.csproj.AssemblyReference.cache
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.AssemblyInfoInputs.cache
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.AssemblyInfo.cs
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.csproj.CoreCompileInputs.cache
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\refint\DepositoHelados.Application.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.pdb
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\ref\DepositoHelados.Application.dll
