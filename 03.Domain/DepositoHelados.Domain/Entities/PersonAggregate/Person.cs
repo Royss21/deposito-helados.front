@@ -1,3 +1,5 @@
+using DepositoHelados.Domain.Entities.MasterAggregate;
+
 namespace DepositoHelados.Domain.Entities.PersonAggregate;
 
 public class Person : BaseAuditCampus<Guid>, IAggregateRoot
@@ -5,6 +7,7 @@ public class Person : BaseAuditCampus<Guid>, IAggregateRoot
 
 
     private readonly List<PersonRole> _personRoles = new();
+    private readonly List<PersonAddress> _personAddresses= new();
 
     public virtual string FirstName { get; private set; } = string.Empty;
     public virtual string SecondName  { get; private set; } = string.Empty;
@@ -14,7 +17,10 @@ public class Person : BaseAuditCampus<Guid>, IAggregateRoot
     public virtual int MdIdentityDocumentTypeId { get; private set; } 
     public virtual string Email  { get; private set; } = string.Empty;
     public virtual string PhoneNumber   { get; private set; } = string.Empty;
+    
+    public virtual MasterDetail MdIdentityDocumentType  { get; private set; }
     public IEnumerable<PersonRole> PersonRoles => _personRoles.AsReadOnly();
+    public IEnumerable<PersonAddress> PersonAddresses => _personAddresses.AsReadOnly();
 
     public void SetFirstName(string name) => FirstName = name;
     public void SetSecondName(string secondName) => SecondName = secondName;

@@ -1,3 +1,6 @@
+using DepositoHelados.Domain.Entities.MasterAggregate;
+using DepositoHelados.Domain.Entities.ProductAggregate;
+
 namespace DepositoHelados.Domain.Entities.OrderAggregate;
 
 public class OrderDetail : BaseAudit<int>
@@ -9,6 +12,11 @@ public class OrderDetail : BaseAudit<int>
     public virtual decimal DevolutionQuantity { get; private set; }
     public virtual decimal ProductPrice   { get; private set; }
     public virtual DateTime OrderDate  { get; private set; }
+
+
+    public virtual Order Order  { get; private set; }
+    public virtual Product Product  { get; private set; }
+    public virtual MasterDetail MdUnitMeasurement  { get; private set; }
 
     public void SetOrderId(Guid orderId) => OrderId = orderId;
     public void SetProductId(Guid productId) => ProductId = productId;

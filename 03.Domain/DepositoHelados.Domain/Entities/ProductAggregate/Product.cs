@@ -2,6 +2,7 @@ namespace DepositoHelados.Domain.Entities.ProductAggregate;
 
 using DepositoHelados.Domain.Base;
 using DepositoHelados.Domain.Commons.Interfaces;
+using DepositoHelados.Domain.Entities.MasterAggregate;
 
 public class Product: BaseAuditCampus<Guid>, IAggregateRoot
 {
@@ -19,6 +20,8 @@ public class Product: BaseAuditCampus<Guid>, IAggregateRoot
     public virtual int MdBrandId { get; private set; } 
     public virtual string Name { get; private set; } = string.Empty;
     public virtual string Description { get; private set; } = string.Empty;
+
+    public virtual MasterDetail MdBrand { get; private set; }
     public IEnumerable<ProductArchive> ProductArchives => _productArchives.AsReadOnly();
     public IEnumerable<ProductCategory> ProductCategories => _productCategories.AsReadOnly();
     public IEnumerable<ProductFlavor> ProductFlavors => _productFlavors.AsReadOnly();

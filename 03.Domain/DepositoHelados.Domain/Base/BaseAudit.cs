@@ -1,3 +1,5 @@
+using DepositoHelados.Domain.Entities.CompanyAggregate;
+
 namespace DepositoHelados.Domain.Base;
 
 public abstract class BaseEntity<TId>
@@ -22,5 +24,6 @@ public abstract class BaseAuditCampus<TId>
     : BaseAudit<TId>, IBaseCampus
 {
     public Guid CampusId { get ; set ; }
+    public virtual Campus Campus { get; set; }
 }
 

@@ -9,7 +9,6 @@ public class ProductArchive: BaseAudit<int>
     public virtual Guid ProductId { get; private set; } 
     public virtual int Sort { get; private set; }
 
-
     public virtual Archive Archive { get; set; }
     public virtual Product Product { get; set; }
 

@@ -1,3 +1,6 @@
+using DepositoHelados.Domain.Entities.MasterAggregate;
+using DepositoHelados.Domain.Entities.OrderAggregate;
+
 namespace DepositoHelados.Domain.Entities.PersonAggregate;
 
 public class AmountAccount : BaseAudit<Guid>
@@ -9,6 +12,9 @@ public class AmountAccount : BaseAudit<Guid>
     public virtual Guid? OrderId { get; private set; } 
     public virtual int MdStatusId { get; private set; }
 
+    public virtual PersonRole PersonRole  { get; private set; }
+    public virtual Order? Order  { get; private set; }
+    public virtual MasterDetail MdStatus  { get; private set; }
 
     public void SetPersonRoleId(int personRoleId) => PersonRoleId = personRoleId;
     public void SetAmount(decimal amount) => Amount = amount;

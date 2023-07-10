@@ -1,6 +1,7 @@
 namespace DepositoHelados.Domain.Entities.ProductAggregate;
 
 using DepositoHelados.Domain.Base;
+using DepositoHelados.Domain.Entities.MasterAggregate;
 
 public class ProductPrice: BaseAudit<Guid>
 {
@@ -12,6 +13,9 @@ public class ProductPrice: BaseAudit<Guid>
     public virtual decimal EmployeePrice  { get; private set; }
     public virtual decimal OtherPriceOne { get; private set; }
     public virtual decimal OtherPriceTwo { get; private set; }
+
+    public virtual Product Product { get; set; }
+    public virtual MasterDetail MdUnitMeasurement { get; set; }
 
     public void SetProductId(Guid productId) => ProductId = productId;
     public void SetMdUnitMeasurementId(int mdUnitMeasurementId) => MdUnitMeasurementId = mdUnitMeasurementId;
