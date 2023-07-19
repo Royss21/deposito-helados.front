@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DepositoHelados.Infraestructure.Context.Base;
+
 public abstract class BaseEntityTypeConfig<TEntity, TId> 
     : IEntityTypeConfiguration<TEntity> 
     where TEntity : BaseAudit<TId>

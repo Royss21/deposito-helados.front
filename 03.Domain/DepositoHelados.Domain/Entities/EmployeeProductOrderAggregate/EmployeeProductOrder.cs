@@ -2,7 +2,7 @@ using DepositoHelados.Domain.Entities.PersonAggregate;
 
 namespace DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
 
-public class EmployeeProductOrder : BaseAuditCampus<Guid>, IAggregateRoot
+public class EmployeeProductOrder : BaseAuditCampus<int>, IAggregateRoot
 {
     
     private readonly List<EmployeeProductOrderDetail> _employeeProductOrderDetails = new();

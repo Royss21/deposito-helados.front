@@ -6,6 +6,7 @@ namespace DepositoHelados.Domain.Entities.PersonAggregate;
 public class AmountAccount : BaseAudit<Guid>
 {
 
+    
     public virtual int PersonRoleId { get; private set; }
     public virtual decimal Amount { get; private set; }
     public virtual DateTime? CancellationDate { get; private set; } 

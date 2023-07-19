@@ -5,7 +5,8 @@ namespace DepositoHelados.Domain.Entities.OrderAggregate;
 
 public class Order : BaseAuditCampus<Guid>, IAggregateRoot
 {
-    private readonly List<OrderAdvanceAmount> _orderAdvanceAmount = new();
+    private readonly List<OrderAdvanceAmount> _orderAdvanceAmounts = new();
+    private readonly List<OrderDetail> _orderDetails = new();
 
     public virtual int PersonRoleId { get; private set; }
     public virtual int MdOrderTypeId  { get; private set; }
@@ -16,7 +17,8 @@ public class Order : BaseAuditCampus<Guid>, IAggregateRoot
     public virtual MasterDetail MdOrderType { get; set; }
     public virtual MasterDetail MdStatus { get; set; }
 
-    public IEnumerable<OrderAdvanceAmount> OrderAdvanceAmount => _orderAdvanceAmount.AsReadOnly();
+    public IEnumerable<OrderAdvanceAmount> OrderAdvanceAmounts => _orderAdvanceAmounts.AsReadOnly();
+    public IEnumerable<OrderDetail> OrderDetails => _orderDetails.AsReadOnly();
 
     public void SetPersonRoleId(int personRoleId) => PersonRoleId = personRoleId;
     public void SetMdOrderTypeId(int mdOrderTypeId) => MdOrderTypeId = mdOrderTypeId;

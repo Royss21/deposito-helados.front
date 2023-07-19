@@ -1,4 +1,6 @@
-namespace DepositoHelados.Domain.Entities.UserAggregate;
+using DepositoHelados.Domain.Entities.CompanyAggregate;
+
+namespace DepositoHelados.Domain.Entities.MenuAggregate;
 
 public class Menu : BaseAudit<Guid>, IAggregateRoot
 {
@@ -8,7 +10,9 @@ public class Menu : BaseAudit<Guid>, IAggregateRoot
     public virtual string Name  { get; private set; } = string.Empty;
     public virtual string Url  { get; private set; } = string.Empty;
     public virtual int Sort  { get; private set; }
+    public virtual Guid CompanyId { get; private set; }
 
+    public virtual Company Company { get; set; }
     public IEnumerable<MenuRole> MenuRoles => _menuRoles.AsReadOnly();
     
     public void SetIcon(string icon) => Icon = icon;
