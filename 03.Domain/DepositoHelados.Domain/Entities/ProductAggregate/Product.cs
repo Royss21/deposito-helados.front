@@ -19,6 +19,7 @@ public class Product: BaseAuditCompany<Guid>, IAggregateRoot
     public virtual string Name { get; private set; } = string.Empty;
     public virtual string Description { get; private set; } = string.Empty;
 
+
     public virtual MasterDetail MdBrand { get; private set; }
     public IEnumerable<ProductArchive> ProductArchives => _productArchives.AsReadOnly();
     public IEnumerable<OrderDetail> OrderDetails => _orderDetails.AsReadOnly();
