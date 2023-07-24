@@ -3,10 +3,8 @@ using DepositoHelados.Domain.Entities.OrderAggregate;
 
 namespace DepositoHelados.Domain.Entities.PersonAggregate;
 
-public class AmountAccount : BaseAudit<Guid>
+public class PersonAmountAccount : BaseAudit<int>
 {
-
-    
     public virtual int PersonRoleId { get; private set; }
     public virtual decimal Amount { get; private set; }
     public virtual DateTime? CancellationDate { get; private set; } 

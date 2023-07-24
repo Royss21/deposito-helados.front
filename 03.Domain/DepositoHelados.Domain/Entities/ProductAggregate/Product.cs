@@ -6,7 +6,7 @@ using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
 using DepositoHelados.Domain.Entities.MasterAggregate;
 using DepositoHelados.Domain.Entities.OrderAggregate;
 
-public class Product: BaseAuditCampus<Guid>, IAggregateRoot
+public class Product: BaseAuditCompany<Guid>, IAggregateRoot
 {
     private readonly List<ProductArchive> _productArchives = new();
     private readonly List<ProductCategory> _productCategories = new();

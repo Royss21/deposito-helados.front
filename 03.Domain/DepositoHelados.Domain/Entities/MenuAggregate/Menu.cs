@@ -2,7 +2,7 @@ using DepositoHelados.Domain.Entities.CompanyAggregate;
 
 namespace DepositoHelados.Domain.Entities.MenuAggregate;
 
-public class Menu : BaseAudit<Guid>, IAggregateRoot
+public class Menu : BaseAuditCompany<Guid>, IAggregateRoot
 {
     private readonly List<MenuRole> _menuRoles = new();
 

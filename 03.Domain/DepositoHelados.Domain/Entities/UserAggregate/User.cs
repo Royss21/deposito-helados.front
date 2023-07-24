@@ -1,8 +1,7 @@
-using DepositoHelados.Domain.Entities.CompanyAggregate;
 
 namespace DepositoHelados.Domain.Entities.UserAggregate;
 
-public class User : BaseAudit<Guid>, IAggregateRoot
+public class User : BaseAuditCompany<Guid>, IAggregateRoot
 {
     private readonly List<UserRole> _userRoles = new();
 
@@ -10,9 +9,7 @@ public class User : BaseAudit<Guid>, IAggregateRoot
     public virtual string UserName { get; private set; } = string.Empty;
     public virtual string Password { get; private set; } = string.Empty;
     public virtual int HashType { get; private set; }
-    public virtual Guid CompanyId { get; private set; }
 
-    public virtual Company Company { get; set; }
     public IEnumerable<UserRole> UserRoles => _userRoles.AsReadOnly();
 
     public void SetPersonRoleId(int personRoleId) => PersonRoleId = personRoleId;

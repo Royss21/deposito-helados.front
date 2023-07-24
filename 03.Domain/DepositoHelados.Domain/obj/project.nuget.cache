@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aTr14WfdAq2L4iPzQquVVcc7y4tbe6e6pEe0J/yZ9Qq1trEdrGeHFz9UvedN+PtHzFvnb1mjqR8m2u2dskJaOQ==",
+  "dgSpecHash": "RBUBGWSlKjWCsKVc+SGxDJt+9ewGyk+3E753FRNXLRT9HEOLuEIjx47wusfmmoVyotJKBHf6Zaxv0uJfY7W+6w==",
   "success": true,
-  "projectFilePath": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
+  "projectFilePath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.8\\microsoft.entityframeworkcore.7.0.8.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.8\\microsoft.entityframeworkcore.abstractions.7.0.8.nupkg.sha512",

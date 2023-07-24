@@ -23,15 +23,7 @@ public class CampusConfig : BaseEntityTypeConfig<Campus, int>
             .WithMany(p => p.Campus)
             .HasForeignKey(p => p.CompanyId);
 
-        builder.HasMany(p => p.Archives)
-            .WithOne(p => p.Campus)
-            .HasForeignKey( p => p.CampusId);
-
         builder.HasMany(p => p.Categories)
-            .WithOne(p => p.Campus)
-            .HasForeignKey( p => p.CampusId);
-
-        builder.HasMany(p => p.EmployeeProductOrders)
             .WithOne(p => p.Campus)
             .HasForeignKey( p => p.CampusId);
 
@@ -40,18 +32,6 @@ public class CampusConfig : BaseEntityTypeConfig<Campus, int>
             .HasForeignKey( p => p.CampusId);
 
         builder.HasMany(p => p.PersonRoles)
-            .WithOne(p => p.Campus)
-            .HasForeignKey( p => p.CampusId);
-
-        builder.HasMany(p => p.Products)
-            .WithOne(p => p.Campus)
-            .HasForeignKey( p => p.CampusId);
-
-        builder.HasMany(p => p.MenuRoles)
-            .WithOne(p => p.Campus)
-            .HasForeignKey( p => p.CampusId);
-            
-        builder.HasMany(p => p.UserRoles)
             .WithOne(p => p.Campus)
             .HasForeignKey( p => p.CampusId);
     }  

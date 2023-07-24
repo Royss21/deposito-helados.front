@@ -22,9 +22,5 @@ public class MenuRoleConfig : BaseEntityTypeConfig<MenuRole, int>
         builder.HasOne(p => p.Role)
             .WithMany(p => p.MenuRoles)
             .HasForeignKey( p => p.MenuId);
-
-        builder.HasOne(p => p.Campus)
-            .WithMany(p => p.MenuRoles)
-            .HasForeignKey( p => p.CampusId);
     }  
 }

@@ -3,7 +3,7 @@ namespace DepositoHelados.Domain.Entities.ProductAggregate;
 using DepositoHelados.Domain.Base;
 using DepositoHelados.Domain.Entities.MasterAggregate;
 
-public class ProductPrice: BaseAudit<Guid>
+public class ProductPrice: BaseAudit<int>
 {
     public virtual Guid ProductId { get; private set; } 
     public virtual int MdUnitMeasurementId { get; private set; } 

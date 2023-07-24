@@ -10,3 +10,8 @@ D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\Depo
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\obj\Debug\net7.0\refint\DepositoHelados.Infraestructure.dll
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\obj\Debug\net7.0\DepositoHelados.Infraestructure.pdb
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\obj\Debug\net7.0\ref\DepositoHelados.Infraestructure.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\bin\Debug\net7.0\DepositoHelados.Domain.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\bin\Debug\net7.0\DepositoHelados.Domain.pdb
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\obj\Debug\net7.0\DepositoHelados.Infraestructure.csproj.CopyComplete
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\bin\Debug\net7.0\DepositoHelados.Infraestructure.runtimeconfig.json
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\04.Infraestructure\DepositoHelados.Infraestructure\obj\Debug\net7.0\DepositoHelados.Infraestructure.genruntimeconfig.cache

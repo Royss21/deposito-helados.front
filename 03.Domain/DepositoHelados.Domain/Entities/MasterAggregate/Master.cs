@@ -1,6 +1,6 @@
 namespace DepositoHelados.Domain.Entities.MasterAggregate;
 
-public class Master: BaseAudit<Guid>, IAggregateRoot
+public class Master: BaseAuditCompany<Guid>, IAggregateRoot
 {
     private readonly List<MasterDetail> _masterDetail = new();
     

@@ -5,10 +5,10 @@ using DepositoHelados.Domain.Entities.ProductAggregate;
 
 namespace DepositoHelados.Domain.Entities.ArchiveAggregate;
 
-public class Archive: BaseAuditCampus<Guid>, IAggregateRoot
+public class Archive: BaseAuditCompany<Guid>, IAggregateRoot
 {
     private readonly List<ProductArchive> _productArchives = new();
-    private readonly List<ProductFlavor> _productFlavor = new();
+    private readonly List<ProductFlavor> _productFlavors = new();
     private readonly List<Company> _companies = new();
 
     public virtual string Name { get; private set; } = string.Empty;
@@ -18,7 +18,7 @@ public class Archive: BaseAuditCampus<Guid>, IAggregateRoot
     
     public virtual MasterDetail MdTypeArchive { get; private set; }
     public IEnumerable<ProductArchive> ProductArchives => _productArchives.AsReadOnly();
-    public IEnumerable<ProductFlavor> ProductFlavor => _productFlavor.AsReadOnly();
+    public IEnumerable<ProductFlavor> ProductFlavors => _productFlavors.AsReadOnly();
     public IEnumerable<Company> Companies => _companies.AsReadOnly();
 
 

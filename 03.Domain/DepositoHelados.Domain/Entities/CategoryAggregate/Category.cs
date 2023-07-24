@@ -1,19 +1,22 @@
+using DepositoHelados.Domain.Entities.CompanyAggregate;
 using DepositoHelados.Domain.Entities.ProductAggregate;
 
 namespace DepositoHelados.Domain.Entities.CategoryAggregate;
 
-public class Category: BaseAuditCampus<int>, IAggregateRoot
+public class Category: BaseAuditCompany<int>, IAggregateRoot, IBaseCampus
 {
-    private readonly List<ProductCategory> _productCategory = new();
+    private readonly List<ProductCategory> _productCategories = new();
     public virtual string Name { get; private set; } = string.Empty;
     public virtual string Description { get; private set; } = string.Empty;
     public virtual string Icon { get; private set; } = string.Empty;
     public virtual int Sort { get; private set; }
     public virtual int CategoryParentId { get; private set; }
+    public virtual int CampusId { get ; set ; }
 
     public virtual Category CategoryParent { get; private set; }
+    public virtual Campus Campus { get ; set ; }
+    public IEnumerable<ProductCategory> ProductCategories => _productCategories.AsReadOnly();
 
-    public IEnumerable<ProductCategory> ProductCategory => _productCategory.AsReadOnly();
 
     public void SetCategoryId(int categoryParentId) => CategoryParentId = categoryParentId;
     public void SetName(string name) => Name = name;

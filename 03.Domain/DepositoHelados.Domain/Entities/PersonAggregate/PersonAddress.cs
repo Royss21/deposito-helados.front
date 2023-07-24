@@ -2,7 +2,7 @@ using DepositoHelados.Domain.Entities.MasterAggregate;
 
 namespace DepositoHelados.Domain.Entities.PersonAggregate;
 
-public class PersonAddress : BaseAudit<Guid>
+public class PersonAddress : BaseAudit<int>
 {
 
    public virtual Guid PersonId { get; private set; }

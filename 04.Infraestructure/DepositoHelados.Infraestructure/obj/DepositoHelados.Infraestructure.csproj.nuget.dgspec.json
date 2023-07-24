@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj": {}
+    "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj": {}
   },
   "projects": {
-    "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj": {
+    "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
+        "projectUniqueName": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
         "projectName": "DepositoHelados.Domain",
-        "projectPath": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
+        "projectPath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
         "packagesPath": "C:\\Users\\Royss\\.nuget\\packages\\",
-        "outputPath": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\obj\\",
+        "outputPath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj": {
+    "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj",
+        "projectUniqueName": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj",
         "projectName": "DepositoHelados.Infraestructure",
-        "projectPath": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj",
+        "projectPath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\DepositoHelados.Infraestructure.csproj",
         "packagesPath": "C:\\Users\\Royss\\.nuget\\packages\\",
-        "outputPath": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\obj\\",
+        "outputPath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\04.Infraestructure\\DepositoHelados.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj": {
-                "projectPath": "d:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj"
+              "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj": {
+                "projectPath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj"
               }
             }
           }
@@ -113,13 +113,29 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.8, )"
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.8, )"
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.9, )"
             }
           },
           "imports": [

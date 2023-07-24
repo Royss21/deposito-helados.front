@@ -20,6 +20,14 @@ public class EmployeeProductOrderConfig : BaseEntityTypeConfig<EmployeeProductOr
         builder.HasMany(p => p.EmployeeProductOrderDetails)
             .WithOne(p => p.EmployeeProductOrder)
             .HasForeignKey( p => p.EmployeeProductOrderId);
+            
+        builder.HasOne(p => p.PersonRole)
+            .WithMany(p => p.EmployeeProductsOrders)
+            .HasForeignKey( p => p.PersonRoleId);
+
+        builder.HasOne(p => p.PersonRole)
+            .WithMany(p => p.EmployeeProductsOrders)
+            .HasForeignKey( p => p.PersonRoleId);
 
     }  
 }

@@ -27,11 +27,15 @@ public class ArchiveConfig : BaseEntityTypeConfig<Archive, Guid>
             .WithMany(p => p.Archives)
             .HasForeignKey(f => f.MdTypeArchiveId);
 
+        builder.HasOne(p  => p.Company)
+            .WithMany(p => p.Archives)
+            .HasForeignKey(f => f.CompanyId);
+
         builder.HasMany(p => p.ProductArchives)
             .WithOne(p => p.Archive)
             .HasForeignKey( p => p.ArchiveId);
 
-        builder.HasMany(p => p.ProductFlavor)
+        builder.HasMany(p => p.ProductFlavors)
             .WithOne(p => p.Archive)
             .HasForeignKey( p => p.ArchiveId);
     }  

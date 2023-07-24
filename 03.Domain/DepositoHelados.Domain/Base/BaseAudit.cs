@@ -20,10 +20,10 @@ public abstract class BaseAudit<TId>
     public bool IsActive { get ; set ; }
 }
 
-public abstract class BaseAuditCampus<TId> 
-    : BaseAudit<TId>, IBaseCampus
+public abstract class BaseAuditCompany<TId> 
+    : BaseAudit<TId>, IBaseCompany
 {
-    public Guid CampusId { get ; set ; }
-    public virtual Campus Campus { get; set; }
+    public virtual Guid CompanyId { get ; set ; }
+    public virtual Company Company { get; set; }
 }
 

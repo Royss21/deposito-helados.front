@@ -1,6 +1,8 @@
+using DepositoHelados.Domain.Entities.CompanyAggregate;
+
 namespace DepositoHelados.Domain.Base;
 
-internal interface IBaseAudit
+public interface IBaseAudit
 {
     string CreateUser { get; set; } 
     DateTime CreateDate { get ; set ; }
@@ -12,7 +14,14 @@ internal interface IBaseAudit
     bool IsActive { get ; set ; }
 }
 
-internal interface IBaseCampus
+public interface IBaseCampus
 {
-    Guid CampusId { get; set; }
+    int CampusId { get; set; }
+    Campus Campus { get; set; }
+}
+
+public interface IBaseCompany
+{
+    Guid CompanyId { get; set; }
+    Company Company { get; set; }
 }
