@@ -1,5 +1,7 @@
 ﻿using DepositoHelados.Domain.Commons.Paged;
 using DepositoHelados.Infraestructure.Context;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
@@ -346,6 +348,12 @@ public abstract class GenericRepository<T> where T : class
         var primaryKey = (await query.Select(e => e.GetType().GetProperty(primaryKeyName).GetValue(e, null)).AsNoTracking().FirstOrDefaultAsync());
 
         return primaryKey != null ? (TKey)primaryKey : default;
+    }
+
+    public async Task<ValidationResult> ValidateEntityAsync ( T t,IValidator<T> validation)
+    {
+        var validationResultEntity = await validation.ValidateAsync(t);
+        return validationResultEntity;
     }
 }
 

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "pakoPM2Uh/WAAQrZVg0i3Avom57mB6/iCwOOZgVedEm/K4HUtX4ulNUugncwN7HmLsVHO1/370fa6X64O9Q9Tg==",
+  "dgSpecHash": "j1DqUGD4MxEo3+jSkQOKMjFBvjS5fhLPT9JFm5AC8IN+md35DxVsNmW0v9OLB31yG9Id+mVDInf363itxOSpIA==",
   "success": true,
   "projectFilePath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\01.Api\\DepositoHelados\\DepositoHelados.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Royss\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Royss\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

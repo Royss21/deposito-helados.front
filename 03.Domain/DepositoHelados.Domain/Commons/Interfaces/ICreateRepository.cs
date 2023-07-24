@@ -7,5 +7,6 @@ public interface ICreateRepository<T> where T : class
 
     Task AddAsync(T t);
     Task AddAsync(IEnumerable<T> t);
+
 }
 

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RBUBGWSlKjWCsKVc+SGxDJt+9ewGyk+3E753FRNXLRT9HEOLuEIjx47wusfmmoVyotJKBHf6Zaxv0uJfY7W+6w==",
+  "dgSpecHash": "LayDQD1cG0T1bkTA8wqHQC6RcbCG+XF/V1c0uW5xpHbfcFVBfNxU0IVE/ExkXIwFMq4ui23efcs/3OC0pcf44w==",
   "success": true,
   "projectFilePath": "D:\\02.Proyectos\\02.DepositosHelados\\DepositoHelados.back\\03.Domain\\DepositoHelados.Domain\\DepositoHelados.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Royss\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.8\\microsoft.entityframeworkcore.7.0.8.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.8\\microsoft.entityframeworkcore.abstractions.7.0.8.nupkg.sha512",
     "C:\\Users\\Royss\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.8\\microsoft.entityframeworkcore.analyzers.7.0.8.nupkg.sha512",

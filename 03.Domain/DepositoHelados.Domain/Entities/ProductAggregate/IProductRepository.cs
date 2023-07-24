@@ -1,11 +1,10 @@
 ﻿namespace DepositoHelados.Domain.Entities.ProductAggregate
 {
-    public interface IProductRepository : 
+    public interface IProductRepository :
         ICreateRepository<Product>,
         IUpdateRepository<Product>,
         IReadRepository<Product>,
-        IRemoveRepository<Product>
-    {
-
-    }
+        IRemoveRepository<Product>,
+        IValidateRepository<Product>
+    { }
 }
