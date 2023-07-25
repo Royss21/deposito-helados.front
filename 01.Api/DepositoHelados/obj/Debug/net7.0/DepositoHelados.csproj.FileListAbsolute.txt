@@ -78,3 +78,11 @@ D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\System.CodeDom.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\AutoMapper.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\FluentValidation.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\MediatR.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\MediatR.Contracts.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\DepositoHelados.Application.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\DepositoHelados.Application.pdb
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll

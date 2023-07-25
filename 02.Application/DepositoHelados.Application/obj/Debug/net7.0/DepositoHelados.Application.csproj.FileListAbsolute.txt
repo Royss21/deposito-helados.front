@@ -10,3 +10,8 @@ D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\Deposito
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\refint\DepositoHelados.Application.dll
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.pdb
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\ref\DepositoHelados.Application.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Domain.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Infraestructure.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Infraestructure.pdb
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\bin\Debug\net7.0\DepositoHelados.Domain.pdb
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\02.Application\DepositoHelados.Application\obj\Debug\net7.0\DepositoHelados.Application.csproj.CopyComplete

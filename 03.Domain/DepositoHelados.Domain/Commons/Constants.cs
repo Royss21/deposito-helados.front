@@ -10,6 +10,9 @@ public struct Constants {
     public const string CLAIM_USERNAME = "userName";
     public const string CLAIM_COMPANY = "company";
     public const string CLAIM_CAMPUS = "campus";
-    
+
     #endregion
+
+    public const string SUCCESS_MESSAGE = "Se ha procesado con exitosamente la operacion.";
+
 }
