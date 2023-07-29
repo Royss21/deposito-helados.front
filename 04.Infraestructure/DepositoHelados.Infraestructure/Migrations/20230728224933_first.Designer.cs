@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DepositoHelados.Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230724012935_firstMigration")]
-    partial class firstMigration
+    [Migration("20230728224933_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,15 +39,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("FileName")
                         .IsRequired()
@@ -55,7 +59,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -69,8 +75,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -99,10 +107,7 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CampusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryParentId")
+                    b.Property<int?>("CategoryParentId")
                         .HasColumnType("int");
 
                     b.Property<Guid>("CompanyId")
@@ -113,15 +118,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -134,7 +143,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -145,8 +156,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -157,8 +170,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CampusId");
 
                     b.HasIndex("CategoryParentId");
 
@@ -183,15 +194,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("FiscalAddress")
                         .IsRequired()
@@ -199,7 +214,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -210,8 +227,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -231,7 +250,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ArchiveId")
+                    b.Property<Guid?>("ArchiveId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BusinessName")
@@ -244,15 +263,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("FiscalAddress")
                         .IsRequired()
@@ -260,7 +283,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -271,8 +296,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -307,8 +334,10 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime>("DateProductOrder")
                         .HasColumnType("datetime2");
@@ -317,11 +346,15 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -332,8 +365,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<int>("PersonRoleId")
                         .HasColumnType("int");
@@ -360,21 +395,27 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<int>("EmployeeProductOrderId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -388,8 +429,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -427,15 +470,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -443,7 +490,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(400)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -454,8 +503,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -482,7 +533,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("AdditionalSecond")
+                    b.Property<string>("AdditionalTwo")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -497,15 +548,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -513,7 +568,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -527,8 +584,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -559,15 +618,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Icon")
                         .IsRequired()
@@ -575,7 +638,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -586,8 +651,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -622,18 +689,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -647,8 +720,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
@@ -681,18 +756,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -709,8 +790,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<int>("PersonRoleId")
                         .HasColumnType("int");
@@ -744,18 +827,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -766,8 +855,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
@@ -792,21 +883,27 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<decimal>("DevolutionQuantity")
                         .HasColumnType("money");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -820,8 +917,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -863,15 +962,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -889,7 +992,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -913,8 +1018,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -953,18 +1060,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -978,8 +1091,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
@@ -1075,18 +1190,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1097,8 +1218,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
@@ -1136,15 +1259,19 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -1152,7 +1279,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1166,8 +1295,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1199,18 +1330,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1221,8 +1358,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -1255,18 +1394,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1277,8 +1422,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -1311,18 +1458,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1336,8 +1489,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -1369,21 +1524,27 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<decimal>("EmployeePrice")
                         .HasColumnType("money");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1397,8 +1558,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<decimal>("OtherPriceOne")
                         .HasColumnType("money");
@@ -1448,18 +1611,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1470,8 +1639,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1499,21 +1670,27 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<int>("HashType")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1524,8 +1701,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -1563,18 +1742,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1585,8 +1770,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
@@ -1616,18 +1803,24 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Property<string>("CreateUser")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1638,8 +1831,10 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
 
                     b.Property<string>("RefreshToken")
                         .IsRequired()
@@ -1689,25 +1884,15 @@ namespace DepositoHelados.Infraestructure.Migrations
 
             modelBuilder.Entity("DepositoHelados.Domain.Entities.CategoryAggregate.Category", b =>
                 {
-                    b.HasOne("DepositoHelados.Domain.Entities.CompanyAggregate.Campus", "Campus")
-                        .WithMany("Categories")
-                        .HasForeignKey("CampusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DepositoHelados.Domain.Entities.CategoryAggregate.Category", "CategoryParent")
                         .WithMany()
-                        .HasForeignKey("CategoryParentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("CategoryParentId");
 
                     b.HasOne("DepositoHelados.Domain.Entities.CompanyAggregate.Company", "Company")
                         .WithMany("Categories")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Campus");
 
                     b.Navigation("CategoryParent");
 
@@ -1729,9 +1914,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                 {
                     b.HasOne("DepositoHelados.Domain.Entities.ArchiveAggregate.Archive", "Archive")
                         .WithMany("Companies")
-                        .HasForeignKey("ArchiveId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ArchiveId");
 
                     b.Navigation("Archive");
                 });
@@ -2174,8 +2357,6 @@ namespace DepositoHelados.Infraestructure.Migrations
 
             modelBuilder.Entity("DepositoHelados.Domain.Entities.CompanyAggregate.Campus", b =>
                 {
-                    b.Navigation("Categories");
-
                     b.Navigation("EmployeeProductOrders");
 
                     b.Navigation("Orders");

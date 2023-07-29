@@ -18,6 +18,7 @@ public abstract class BaseAudit<TId>
     public DateTime? DeleteDate { get ; set ; }
     public bool IsDeleted { get ; set ; }
     public bool IsActive { get ; set ; }
+
 }
 
 public abstract class BaseAuditCompany<TId> 

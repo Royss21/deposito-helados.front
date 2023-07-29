@@ -28,7 +28,7 @@ public class MasterDetailConfig : BaseEntityTypeConfig<MasterDetail, int>
             .HasMaxLength(100)
             .IsRequired();
 
-        builder.Property(p => p.AdditionalSecond)
+        builder.Property(p => p.AdditionalTwo)
             .HasMaxLength(100)
             .IsRequired();
 

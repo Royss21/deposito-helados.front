@@ -11,6 +11,15 @@ namespace DepositoHelados.Domain.Entities.CompanyAggregate;
 
 public class Company : BaseAudit<Guid>, IAggregateRoot
 {
+    public Company(Guid id, string name, string businessName, string ruc, string fiscalAddress)
+    {
+        Id= id;
+        Name= name;
+        BusinessName= businessName;
+        Ruc= ruc;
+        FiscalAddress= fiscalAddress;
+    }
+
     private readonly List<Campus> _campus = new();
     private readonly List<Role> _roles = new();
     private readonly List<User> _users = new();
@@ -25,10 +34,10 @@ public class Company : BaseAudit<Guid>, IAggregateRoot
     public virtual string BusinessName  { get; private set; } = string.Empty;
     public virtual string Ruc  { get; private set; } = string.Empty;
     public virtual string FiscalAddress  { get; private set; } = string.Empty;
-    public virtual Guid ArchiveId  { get; private set; }
+    public virtual Guid? ArchiveId  { get; private set; }
 
 
-    public virtual Archive Archive { get; private set; }
+    public virtual Archive? Archive { get; private set; }
     public IEnumerable<Master> Masters => _masters.AsReadOnly();
     public IEnumerable<Archive> Archives => _archives.AsReadOnly();
     public IEnumerable<Campus> Campus => _campus.AsReadOnly();

@@ -19,6 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Infraestructure", "04.In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepositoHelados.Infraestructure", "04.Infraestructure\DepositoHelados.Infraestructure\DepositoHelados.Infraestructure.csproj", "{FCFF26E6-19A5-4215-85A1-4983315B4C68}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Script", "00.Script", "{F503A0CE-3A58-44EF-B8F3-2282E9B6D8CF}"
+	ProjectSection(SolutionItems) = preProject
+		SeedData.sql = SeedData.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

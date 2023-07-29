@@ -23,10 +23,6 @@ public class CampusConfig : BaseEntityTypeConfig<Campus, int>
             .WithMany(p => p.Campus)
             .HasForeignKey(p => p.CompanyId);
 
-        builder.HasMany(p => p.Categories)
-            .WithOne(p => p.Campus)
-            .HasForeignKey( p => p.CampusId);
-
         builder.HasMany(p => p.Orders)
             .WithOne(p => p.Campus)
             .HasForeignKey( p => p.CampusId);

@@ -12,8 +12,10 @@ using DepositoHelados.Domain.Entities.ProductAggregate;
 using DepositoHelados.Domain.Entities.RoleAggregate;
 using DepositoHelados.Domain.Entities.UserAggregate;
 using DepositoHelados.Infraestructure.Context.Configuration;
+using DepositoHelados.Infraestructure.Context.Seed;
 using DepositoHelados.Infraestructure.Helpers;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace DepositoHelados.Infraestructure.Context;
 
@@ -180,6 +182,8 @@ public class ApplicationDbContext : DbContext
         {
             foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
         }
+
+        //SeedDatabase.Init(builder);
     }
 
     private string _getCurrentUser()

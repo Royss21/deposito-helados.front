@@ -34,10 +34,6 @@ public class CategoryConfig : BaseEntityTypeConfig<Category, int>
             .WithMany(p => p.Categories)
             .HasForeignKey(p => p.CompanyId);
 
-        builder.HasOne(p  => p.Campus)
-            .WithMany(p => p.Categories)
-            .HasForeignKey(p => p.CampusId);
-
         builder.HasMany(p => p.ProductCategories)
             .WithOne(p => p.Category)
             .HasForeignKey( p => p.CategoryId);

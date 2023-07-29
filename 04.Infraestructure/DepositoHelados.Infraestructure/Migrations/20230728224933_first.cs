@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DepositoHelados.Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class firstMigration : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,14 +20,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     FileName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     PathName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     MdTypeArchiveId = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -44,15 +44,15 @@ namespace DepositoHelados.Infraestructure.Migrations
                     BusinessName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Ruc = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     FiscalAddress = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    ArchiveId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ArchiveId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -61,8 +61,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                         name: "FK_Company_Archive_ArchiveId",
                         column: x => x.ArchiveId,
                         principalTable: "Archive",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -73,14 +72,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     FiscalAddress = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -95,6 +94,43 @@ namespace DepositoHelados.Infraestructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Sort = table.Column<int>(type: "int", nullable: false),
+                    CategoryParentId = table.Column<int>(type: "int", nullable: true),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
+                    ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Category_Category_CategoryParentId",
+                        column: x => x.CategoryParentId,
+                        principalTable: "Category",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Category_Company_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Company",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Master",
                 columns: table => new
                 {
@@ -102,14 +138,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     Code = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -133,14 +169,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     Url = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -161,14 +197,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Code = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -191,14 +227,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     UserName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     HashType = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -206,51 +242,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                     table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
                         name: "FK_User_Company_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Company",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Category",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Sort = table.Column<int>(type: "int", nullable: false),
-                    CategoryParentId = table.Column<int>(type: "int", nullable: false),
-                    CampusId = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Category", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Category_Campus_CampusId",
-                        column: x => x.CampusId,
-                        principalTable: "Campus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Category_Category_CategoryParentId",
-                        column: x => x.CategoryParentId,
-                        principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Category_Company_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Company",
                         principalColumn: "Id",
@@ -268,16 +259,16 @@ namespace DepositoHelados.Infraestructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     AdditionalOne = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    AdditionalSecond = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    AdditionalTwo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -298,14 +289,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     MenuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -333,14 +324,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     CampusId = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -378,14 +369,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     MdIdentityDocumentTypeId = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -413,14 +404,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     MdBrandId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -450,14 +441,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     TokenExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RefreshToken = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     RefreshTokenExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -480,14 +471,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     MdPostalCodeId = table.Column<int>(type: "int", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     ReferenceAddress = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -516,14 +507,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     CampusId = table.Column<int>(type: "int", nullable: false),
                     UniqueCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -557,14 +548,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     ArchiveId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -592,14 +583,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -628,14 +619,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ArchiveId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Sort = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -673,14 +664,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     EmployeePrice = table.Column<decimal>(type: "money", nullable: false),
                     OtherPriceOne = table.Column<decimal>(type: "money", nullable: false),
                     OtherPriceTwo = table.Column<decimal>(type: "money", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -708,14 +699,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     PersonRoleId = table.Column<int>(type: "int", nullable: false),
                     DateProductOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CampusId = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -744,14 +735,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     Code = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     MdStatusId = table.Column<int>(type: "int", nullable: false),
                     CampusId = table.Column<int>(type: "int", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -792,14 +783,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MdUnitMeasurementId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<decimal>(type: "money", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -832,14 +823,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -865,14 +856,14 @@ namespace DepositoHelados.Infraestructure.Migrations
                     DevolutionQuantity = table.Column<decimal>(type: "money", nullable: false),
                     ProductPrice = table.Column<decimal>(type: "money", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     ModifyDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DeleteUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -953,11 +944,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                 name: "IX_Campus_CompanyId",
                 table: "Campus",
                 column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Category_CampusId",
-                table: "Category",
-                column: "CampusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Category_CategoryParentId",

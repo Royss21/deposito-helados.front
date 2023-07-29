@@ -19,6 +19,7 @@ public abstract class BaseEntityTypeConfig<TEntity, TId>
             .IsRequired();
 
         builder.Property(p => p.CreateUser)
+            .HasDefaultValue("system")
             .HasMaxLength(50)
             .IsRequired();
 
@@ -26,6 +27,7 @@ public abstract class BaseEntityTypeConfig<TEntity, TId>
             .IsRequired(false);
 
         builder.Property(p => p.ModifyUser)
+            .HasDefaultValue("system")
             .HasMaxLength(50)
             .IsRequired(false);
 
@@ -33,10 +35,14 @@ public abstract class BaseEntityTypeConfig<TEntity, TId>
             .IsRequired(false);
 
         builder.Property(p => p.DeleteUser)
+            .HasDefaultValue("system")
             .HasMaxLength(50)
             .IsRequired(false);
 
         builder.Property(p => p.IsDeleted)
             .HasDefaultValue(false);
+
+        builder.Property(p => p.IsActive)
+            .HasDefaultValue(true);
     }
 }

@@ -9,6 +9,24 @@ namespace DepositoHelados.Domain.Entities.MasterAggregate;
 
 public class MasterDetail: BaseAudit<int>
 {
+    public MasterDetail(
+            int id,
+            string code, 
+            string name, 
+            string description, 
+            string additionalOne,
+            string additionalTwo,
+            int sort)
+    {
+        Id = id;
+        Code = code;
+        Name = name;    
+        Description = description;  
+        AdditionalOne = additionalOne;
+        AdditionalTwo = additionalTwo;
+        Sort = sort;
+    }
+
     private readonly List<EmployeeProductOrderDetail> _employeeProductOrderDetails = new();
     private readonly List<Order> _orderOrderTypes = new();
     private readonly List<Order> _orderStatus = new();
@@ -26,7 +44,7 @@ public class MasterDetail: BaseAudit<int>
     public virtual string Name { get; private set; } = string.Empty;
     public virtual string Description { get; private set; } = string.Empty;
     public virtual string AdditionalOne { get; private set; } = string.Empty;
-    public virtual string AdditionalSecond { get; private set; } = string.Empty;
+    public virtual string AdditionalTwo { get; private set; } = string.Empty;
     public virtual int Sort { get; private set; }
 
 
@@ -43,10 +61,12 @@ public class MasterDetail: BaseAudit<int>
     public IEnumerable<OrderDetail> OrderDetailUnitMeasurements => _orderDetailUnitMeasurements.AsReadOnly();
     public IEnumerable<PersonAmountAccount> PersonAmountAcounts => _personAmountAccounts.AsReadOnly();
 
+
+    public void SetMasterId(Guid masterId) => MasterId = masterId;
     public void SetSort(int sort) => Sort = sort;
     public void SetName(string name) => Name = name;
     public void SetCode(string code) => Code = code;
     public void SetDescription(string description) => Description = description;
     public void SetAdditionalOne(string additionalOne) => AdditionalOne = additionalOne;
-    public void SetAdditionalSecond(string additionalSecond) => AdditionalSecond = additionalSecond;
+    public void SetAdditionalSecond(string additionalSecond) => AdditionalTwo = additionalSecond;
 }
