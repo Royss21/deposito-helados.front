@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DepositoHelados.Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class first1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -691,7 +691,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeProductOrder",
+                name: "EmployeeOrderProduct",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -710,15 +710,15 @@ namespace DepositoHelados.Infraestructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeProductOrder", x => x.Id);
+                    table.PrimaryKey("PK_EmployeeOrderProduct", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmployeeProductOrder_Campus_CampusId",
+                        name: "FK_EmployeeOrderProduct_Campus_CampusId",
                         column: x => x.CampusId,
                         principalTable: "Campus",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EmployeeProductOrder_PersonRole_PersonRoleId",
+                        name: "FK_EmployeeOrderProduct_PersonRole_PersonRoleId",
                         column: x => x.PersonRoleId,
                         principalTable: "PersonRole",
                         principalColumn: "Id",
@@ -774,7 +774,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeProductOrderDetail",
+                name: "EmployeeOrderProductDetail",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -782,7 +782,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                     EmployeeProductOrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MdUnitMeasurementId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<decimal>(type: "money", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
                     CreateUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, defaultValue: "system"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyUser = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "system"),
@@ -794,21 +794,21 @@ namespace DepositoHelados.Infraestructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeProductOrderDetail", x => x.Id);
+                    table.PrimaryKey("PK_EmployeeOrderProductDetail", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmployeeProductOrderDetail_EmployeeProductOrder_EmployeeProductOrderId",
+                        name: "FK_EmployeeOrderProductDetail_EmployeeOrderProduct_EmployeeProductOrderId",
                         column: x => x.EmployeeProductOrderId,
-                        principalTable: "EmployeeProductOrder",
+                        principalTable: "EmployeeOrderProduct",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EmployeeProductOrderDetail_MasterDetail_MdUnitMeasurementId",
+                        name: "FK_EmployeeOrderProductDetail_MasterDetail_MdUnitMeasurementId",
                         column: x => x.MdUnitMeasurementId,
                         principalTable: "MasterDetail",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EmployeeProductOrderDetail_Product_ProductId",
+                        name: "FK_EmployeeOrderProductDetail_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "Id",
@@ -961,28 +961,28 @@ namespace DepositoHelados.Infraestructure.Migrations
                 column: "ArchiveId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeProductOrder_CampusId",
-                table: "EmployeeProductOrder",
+                name: "IX_EmployeeOrderProduct_CampusId",
+                table: "EmployeeOrderProduct",
                 column: "CampusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeProductOrder_PersonRoleId",
-                table: "EmployeeProductOrder",
+                name: "IX_EmployeeOrderProduct_PersonRoleId",
+                table: "EmployeeOrderProduct",
                 column: "PersonRoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeProductOrderDetail_EmployeeProductOrderId",
-                table: "EmployeeProductOrderDetail",
+                name: "IX_EmployeeOrderProductDetail_EmployeeProductOrderId",
+                table: "EmployeeOrderProductDetail",
                 column: "EmployeeProductOrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeProductOrderDetail_MdUnitMeasurementId",
-                table: "EmployeeProductOrderDetail",
+                name: "IX_EmployeeOrderProductDetail_MdUnitMeasurementId",
+                table: "EmployeeOrderProductDetail",
                 column: "MdUnitMeasurementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeProductOrderDetail_ProductId",
-                table: "EmployeeProductOrderDetail",
+                name: "IX_EmployeeOrderProductDetail_ProductId",
+                table: "EmployeeOrderProductDetail",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -1156,6 +1156,12 @@ namespace DepositoHelados.Infraestructure.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Role_Code",
+                table: "Role",
+                column: "Code",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Role_CompanyId",
                 table: "Role",
                 column: "CompanyId");
@@ -1215,7 +1221,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                 table: "Master");
 
             migrationBuilder.DropTable(
-                name: "EmployeeProductOrderDetail");
+                name: "EmployeeOrderProductDetail");
 
             migrationBuilder.DropTable(
                 name: "MenuRole");
@@ -1248,7 +1254,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                 name: "UserToken");
 
             migrationBuilder.DropTable(
-                name: "EmployeeProductOrder");
+                name: "EmployeeOrderProduct");
 
             migrationBuilder.DropTable(
                 name: "Menu");

@@ -15,8 +15,11 @@ public class RoleConfig : BaseEntityTypeConfig<Role, int>
             .IsRequired();
 
         builder.Property(p => p.Code)
-            .HasMaxLength(12)
+            .HasMaxLength(12)     
             .IsRequired();
+
+        builder.HasIndex(x => x.Code)
+            .IsUnique(true);
 
         builder.Property(p => p.CompanyId)
             .IsRequired();
@@ -27,10 +30,13 @@ public class RoleConfig : BaseEntityTypeConfig<Role, int>
 
         builder.HasMany(p => p.MenuRoles)
             .WithOne(p => p.Role)
-            .HasForeignKey( p => p.RoleId);
+            .HasForeignKey(p => p.RoleId)
+            ;
+
 
         builder.HasMany(p => p.PersonRoles)
             .WithOne(p => p.Role)
-            .HasForeignKey( p => p.RoleId);
+            .HasForeignKey( p => p.RoleId)
+            ;
     }  
 }

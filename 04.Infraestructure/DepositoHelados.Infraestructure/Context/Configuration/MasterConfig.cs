@@ -25,7 +25,8 @@ public class MasterConfig : BaseEntityTypeConfig<Master, Guid>
 
         builder.HasMany(p => p.MasterDetails)
             .WithOne(p => p.Master)
-            .HasForeignKey( p => p.MasterId);
+            .HasForeignKey( p => p.MasterId)
+            ;
 
         builder.HasOne(p => p.Company)
             .WithMany(p => p.Masters)

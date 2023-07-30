@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DepositoHelados.Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230728224933_first")]
-    partial class first
+    [Migration("20230730032357_first1")]
+    partial class first1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -318,7 +318,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.ToTable("Company");
                 });
 
-            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeProductOrder", b =>
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeOrderProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -379,10 +379,10 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.HasIndex("PersonRoleId");
 
-                    b.ToTable("EmployeeProductOrder");
+                    b.ToTable("EmployeeOrderProduct");
                 });
 
-            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeProductOrderDetail", b =>
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeOrderProductDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -437,8 +437,8 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("money");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -448,7 +448,7 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("EmployeeProductOrderDetail");
+                    b.ToTable("EmployeeOrderProductDetail");
                 });
 
             modelBuilder.Entity("DepositoHelados.Domain.Entities.MasterAggregate.Master", b =>
@@ -1651,6 +1651,9 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Code")
+                        .IsUnique();
+
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Role");
@@ -1919,7 +1922,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Navigation("Archive");
                 });
 
-            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeProductOrder", b =>
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeOrderProduct", b =>
                 {
                     b.HasOne("DepositoHelados.Domain.Entities.CompanyAggregate.Campus", "Campus")
                         .WithMany("EmployeeProductOrders")
@@ -1938,9 +1941,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Navigation("PersonRole");
                 });
 
-            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeProductOrderDetail", b =>
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeOrderProductDetail", b =>
                 {
-                    b.HasOne("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeProductOrder", "EmployeeProductOrder")
+                    b.HasOne("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeOrderProduct", "EmployeeProductOrder")
                         .WithMany("EmployeeProductOrderDetails")
                         .HasForeignKey("EmployeeProductOrderId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -2387,7 +2390,7 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeProductOrder", b =>
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate.EmployeeOrderProduct", b =>
                 {
                     b.Navigation("EmployeeProductOrderDetails");
                 });

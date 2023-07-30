@@ -31,6 +31,7 @@ public class MenuConfig : BaseEntityTypeConfig<Menu, Guid>
 
         builder.HasMany(p => p.MenuRoles)
             .WithOne(p => p.Menu)
-            .HasForeignKey( p => p.MenuId);
+            .HasForeignKey(p => p.MenuId)
+            ;
     }  
 }

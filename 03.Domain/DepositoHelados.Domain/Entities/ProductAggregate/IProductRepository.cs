@@ -1,4 +1,6 @@
-﻿namespace DepositoHelados.Domain.Entities.ProductAggregate
+﻿using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
+
+namespace DepositoHelados.Domain.Entities.ProductAggregate
 {
     public interface IProductRepository :
         IAggregateRoot,
@@ -7,5 +9,7 @@
         IReadRepository<Product>,
         IRemoveRepository<Product>,
         IValidateRepository<Product>
-    { }
+    {
+  
+    }
 }

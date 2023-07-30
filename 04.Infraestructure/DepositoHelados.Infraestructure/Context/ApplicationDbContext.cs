@@ -37,8 +37,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Category> Category { get; set; }
     public DbSet<Campus> Campus { get; set; }
     public DbSet<Company> Company { get; set; }
-    public DbSet<EmployeeProductOrder> EmployeeProductOrder { get; set; }
-    public DbSet<EmployeeProductOrderDetail> EmployeeProductOrderDetail { get; set; }
+    public DbSet<EmployeeOrderProduct> EmployeeProductOrder { get; set; }
+    public DbSet<EmployeeOrderProductDetail> EmployeeProductOrderDetail { get; set; }
     public DbSet<Master> Master { get; set; }
     public DbSet<MasterDetail> MasterDetail { get; set; }
     public DbSet<Menu> Menu { get; set; }
@@ -69,8 +69,8 @@ public class ApplicationDbContext : DbContext
             .ApplyConfiguration(new CampusConfig())
             .ApplyConfiguration(new CategoryConfig())
             .ApplyConfiguration(new CompanyConfig())
-            .ApplyConfiguration(new EmployeeProductOrderConfig())
-            .ApplyConfiguration(new EmployeeProductOrderDetailConfig())
+            .ApplyConfiguration(new EmployeeOrderProductConfig())
+            .ApplyConfiguration(new EmployeeOrderProductDetailConfig())
             .ApplyConfiguration(new MasterConfig())
             .ApplyConfiguration(new MasterDetailConfig())
             .ApplyConfiguration(new MenuConfig())
@@ -139,6 +139,7 @@ public class ApplicationDbContext : DbContext
 
                     entity.DeleteDate = currentDate;
                     entity.DeleteUser = _currentUser;
+                    entity.IsDeleted= true;
 
                     entityEntry.Property(nameof(entity.CreateDate)).IsModified = false;
                     entityEntry.Property(nameof(entity.CreateUser)).IsModified = false;
@@ -165,7 +166,7 @@ public class ApplicationDbContext : DbContext
             .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?));
 
         builder.AddQueryFilter<IBaseAudit>(e => e.IsDeleted == false);
-        builder.AddQueryFilter<IBaseCompany>(e => e.CompanyId.Equals(Guid.Empty));
+        //builder.AddQueryFilter<IBaseCompany>(e => e.CompanyId.Equals(Guid.Empty));
 
         
         foreach (var entityType in entityTypes)

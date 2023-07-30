@@ -29,14 +29,17 @@ public class PersonRoleConfig : BaseEntityTypeConfig<PersonRole, int>
 
         builder.HasMany(p => p.PersonAmountAccounts)
             .WithOne(p => p.PersonRole)
-            .HasForeignKey( p => p.PersonRoleId);
+            .HasForeignKey( p => p.PersonRoleId)
+            ;
 
         builder.HasMany(p => p.Orders)
             .WithOne(p => p.PersonRole)
-            .HasForeignKey( p => p.PersonRoleId);
+            .HasForeignKey( p => p.PersonRoleId)
+            ;
 
         builder.HasMany(p => p.EmployeeProductsOrders)
             .WithOne(p => p.PersonRole)
-            .HasForeignKey( p => p.PersonRoleId);
+            .HasForeignKey( p => p.PersonRoleId)
+            ;
     }  
 }

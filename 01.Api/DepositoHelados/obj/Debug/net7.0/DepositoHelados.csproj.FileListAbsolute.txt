@@ -15,7 +15,6 @@ D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.AssemblyInfoInputs.cache
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.AssemblyInfo.cs
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.csproj.CoreCompileInputs.cache
-D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.MvcApplicationPartsAssemblyInfo.cs
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.MvcApplicationPartsAssemblyInfo.cache
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\staticwebassets\msbuild.DepositoHelados.Microsoft.AspNetCore.StaticWebAssets.props
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\staticwebassets\msbuild.build.DepositoHelados.props
@@ -86,3 +85,4 @@ D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\DepositoHelados.Application.dll
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\DepositoHelados.Application.pdb
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.MvcApplicationPartsAssemblyInfo.cs

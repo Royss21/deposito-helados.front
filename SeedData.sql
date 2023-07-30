@@ -82,8 +82,8 @@ GO
 insert into [Role]
 (name, Code, CreateUser, CreateDate, CompanyId)
 values
-('Empleado', 'PERSON', 'system', getdate(), '65C3C91F-9DC0-44EB-895D-E573170E24A6'),
-('Cliente', 'PERSON', 'system', getdate(), '65C3C91F-9DC0-44EB-895D-E573170E24A6')
+('Empleado', 'EMPLOYEE', 'system', getdate(), '65C3C91F-9DC0-44EB-895D-E573170E24A6'),
+('Cliente', 'CUSTOMER', 'system', getdate(), '65C3C91F-9DC0-44EB-895D-E573170E24A6')
 
 GO
 

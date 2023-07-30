@@ -13,7 +13,7 @@ public class Product: BaseAuditCompany<Guid>, IAggregateRoot
     private readonly List<ProductFlavor> _productFlavors = new();
     private readonly List<ProductPrice> _productPrices = new();
     private readonly List<OrderDetail> _orderDetails = new();
-    private readonly List<EmployeeProductOrderDetail> _employeeProductOrderDetails = new();
+    private readonly List<EmployeeOrderProductDetail> _employeeProductOrderDetails = new();
 
     public virtual int MdBrandId { get; private set; } 
     public virtual string Name { get; private set; } = string.Empty;
@@ -26,7 +26,7 @@ public class Product: BaseAuditCompany<Guid>, IAggregateRoot
     public IEnumerable<ProductCategory> ProductCategories => _productCategories.AsReadOnly();
     public IEnumerable<ProductFlavor> ProductFlavors => _productFlavors.AsReadOnly();
     public IEnumerable<ProductPrice> ProductPrices => _productPrices.AsReadOnly();
-    public IEnumerable<EmployeeProductOrderDetail> EmployeeProductOrderDetails => _employeeProductOrderDetails.AsReadOnly();
+    public IEnumerable<EmployeeOrderProductDetail> EmployeeProductOrderDetails => _employeeProductOrderDetails.AsReadOnly();
 
 
     public void SetName(string name) => Name = name;

@@ -33,30 +33,37 @@ public class CompanyConfig : BaseEntityTypeConfig<Company, Guid>
 
         builder.HasMany(p => p.Campus)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
+            .HasForeignKey( p => p.CompanyId)
+            ;
 
         builder.HasMany(p => p.Roles)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
+            .HasForeignKey( p => p.CompanyId)
+            ;
 
         builder.HasMany(p => p.Users)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
-             
+            .HasForeignKey( p => p.CompanyId)
+            ;
+
         builder.HasMany(p => p.Categories)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
+            .HasForeignKey( p => p.CompanyId)
+            ;
 
         builder.HasMany(p => p.Menus)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
+            .HasForeignKey( p => p.CompanyId)
+            ;
 
         builder.HasMany(p => p.Persons)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
+            .HasForeignKey( p => p.CompanyId)
+            ;
 
         builder.HasMany(p => p.Products)
             .WithOne(p => p.Company)
-            .HasForeignKey( p => p.CompanyId);
+            .HasForeignKey( p => p.CompanyId)
+            ;
     }  
 }

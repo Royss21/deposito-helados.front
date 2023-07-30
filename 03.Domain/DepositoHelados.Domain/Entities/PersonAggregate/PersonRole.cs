@@ -9,7 +9,7 @@ public class PersonRole : BaseAudit<int>, IBaseCampus
 {
     private readonly List<Order> _orders = new();
     private readonly List<PersonAmountAccount> _personAmountAccounts = new();
-    private readonly List<EmployeeProductOrder> _employeeProductsOrders = new();
+    private readonly List<EmployeeOrderProduct> _employeeProductsOrders = new();
 
     public virtual Guid PersonId  { get; private set; }
     public virtual int RoleId   { get; private set; }
@@ -22,7 +22,7 @@ public class PersonRole : BaseAudit<int>, IBaseCampus
 
     public IEnumerable<PersonAmountAccount> PersonAmountAccounts => _personAmountAccounts.AsReadOnly();
     public IEnumerable<Order> Orders => _orders.AsReadOnly();
-    public IEnumerable<EmployeeProductOrder> EmployeeProductsOrders => _employeeProductsOrders.AsReadOnly();
+    public IEnumerable<EmployeeOrderProduct> EmployeeProductsOrders => _employeeProductsOrders.AsReadOnly();
 
 
     public void SetPersonId(Guid personId) => PersonId = personId;

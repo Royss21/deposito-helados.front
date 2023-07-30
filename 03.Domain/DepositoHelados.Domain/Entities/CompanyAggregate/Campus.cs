@@ -12,7 +12,7 @@ using DepositoHelados.Domain.Entities.UserAggregate;
 
 public class Campus : BaseAuditCompany<int>
 {
-    private readonly List<EmployeeProductOrder> _employeeProductOrders = new();
+    private readonly List<EmployeeOrderProduct> _employeeProductOrders = new();
     private readonly List<Order> _orders = new();
     private readonly List<PersonRole> _personRoles = new();
     private readonly List<UserRole> _userRoles = new();
@@ -21,7 +21,7 @@ public class Campus : BaseAuditCompany<int>
     public virtual string FiscalAddress  { get; private set; } = string.Empty;
 
 
-    public virtual IEnumerable<EmployeeProductOrder> EmployeeProductOrders => _employeeProductOrders.AsReadOnly();
+    public virtual IEnumerable<EmployeeOrderProduct> EmployeeProductOrders => _employeeProductOrders.AsReadOnly();
     public virtual IEnumerable<Order> Orders => _orders.AsReadOnly();
     public virtual IEnumerable<PersonRole> PersonRoles => _personRoles.AsReadOnly();
     public virtual IEnumerable<UserRole> UserRoles => _userRoles.AsReadOnly();

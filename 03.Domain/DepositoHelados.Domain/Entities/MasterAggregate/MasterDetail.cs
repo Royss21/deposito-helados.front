@@ -27,7 +27,7 @@ public class MasterDetail: BaseAudit<int>
         Sort = sort;
     }
 
-    private readonly List<EmployeeProductOrderDetail> _employeeProductOrderDetails = new();
+    private readonly List<EmployeeOrderProductDetail> _employeeProductOrderDetails = new();
     private readonly List<Order> _orderOrderTypes = new();
     private readonly List<Order> _orderStatus = new();
     private readonly List<Person> _persons = new();
@@ -49,7 +49,7 @@ public class MasterDetail: BaseAudit<int>
 
 
    public virtual Master Master { get; private set; }
-    public IEnumerable<EmployeeProductOrderDetail> EmployeeProductOrderDetails => _employeeProductOrderDetails.AsReadOnly();
+    public IEnumerable<EmployeeOrderProductDetail> EmployeeProductOrderDetails => _employeeProductOrderDetails.AsReadOnly();
     public IEnumerable<Order> OrderOrderTypes => _orderOrderTypes.AsReadOnly();
     public IEnumerable<Order> OrderStatus => _orderStatus.AsReadOnly();
     public IEnumerable<Person> Persons => _persons.AsReadOnly();

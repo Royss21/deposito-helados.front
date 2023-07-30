@@ -19,12 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\EmployeeProductOrderService\Commands\CreateProductOrder\" />
-    <Folder Include="Services\EmployeeProductOrderService\Commands\UpdateProductOrder\" />
     <Folder Include="Services\OrderService\" />
-    <Folder Include="Services\EmployeeProductOrderService\Queries\" />
-    <Folder Include="Services\EmployeeProductOrderService\Validators\" />
-    <Folder Include="Services\EmployeeProductOrderService\Dtos\" />
+    <Folder Include="Services\EmployeeOrderProductService\Queries\" />
+    <Folder Include="Services\EmployeeOrderProductService\Validators\" />
   </ItemGroup>
 
 </Project>

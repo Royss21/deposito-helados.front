@@ -40,7 +40,7 @@ public class ExceptionMiddleware
                     break;
                 case Exception exception:
                     result.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    result.Message = $"{ex.Message} || {ex?.InnerException?.Message}";
+                    result.Message = $"{ex.Message}";
                     break;
                 default:
                     break;

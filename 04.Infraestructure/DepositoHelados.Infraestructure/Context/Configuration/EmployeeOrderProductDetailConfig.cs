@@ -5,9 +5,9 @@ using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
 
 namespace DepositoHelados.Infraestructure.Context.Configuration;
 
-public class EmployeeProductOrderDetailConfig : BaseEntityTypeConfig<EmployeeProductOrderDetail, int>
+public class EmployeeOrderProductDetailConfig : BaseEntityTypeConfig<EmployeeOrderProductDetail, int>
 {
-    public override void ConfigureEntity(EntityTypeBuilder<EmployeeProductOrderDetail> builder)
+    public override void ConfigureEntity(EntityTypeBuilder<EmployeeOrderProductDetail> builder)
     {
         builder.HasKey(x => x.Id);
         

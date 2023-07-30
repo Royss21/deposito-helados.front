@@ -42,9 +42,6 @@ public class PersonConfig : BaseEntityTypeConfig<Person, Guid>
         builder.Property(p  => p.MdIdentityDocumentTypeId)
             .IsRequired();
 
-        builder.Property(p => p.IsActive)
-            .HasDefaultValue(true);
-
         builder.HasOne(p => p.Company)
             .WithMany(p => p.Persons)
             .HasForeignKey( p => p.CompanyId);
@@ -55,10 +52,12 @@ public class PersonConfig : BaseEntityTypeConfig<Person, Guid>
 
         builder.HasMany(p => p.PersonRoles)
             .WithOne(p => p.Person)
-            .HasForeignKey( p => p.PersonId);
+            .HasForeignKey( p => p.PersonId)
+            ;
 
         builder.HasMany(p => p.PersonAddresses)
             .WithOne(p => p.Person)
-            .HasForeignKey( p => p.PersonId);
+            .HasForeignKey( p => p.PersonId)
+            ;
     }  
 }

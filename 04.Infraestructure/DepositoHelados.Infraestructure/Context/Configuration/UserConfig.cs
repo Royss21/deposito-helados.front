@@ -30,6 +30,7 @@ public class UserConfig : BaseEntityTypeConfig<User, Guid>
 
         builder.HasMany(p => p.UserRoles)
             .WithOne(p => p.User)
-            .HasForeignKey( p => p.UserId);
+            .HasForeignKey( p => p.UserId)
+            ;
     }  
 }

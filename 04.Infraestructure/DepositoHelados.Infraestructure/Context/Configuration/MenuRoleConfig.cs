@@ -17,10 +17,12 @@ public class MenuRoleConfig : BaseEntityTypeConfig<MenuRole, int>
 
         builder.HasOne(p => p.Menu)
             .WithMany(p => p.MenuRoles)
-            .HasForeignKey( p => p.MenuId);
-            
+            .HasForeignKey(p => p.MenuId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         builder.HasOne(p => p.Role)
             .WithMany(p => p.MenuRoles)
-            .HasForeignKey( p => p.MenuId);
+            .HasForeignKey(p => p.MenuId)
+            .OnDelete(DeleteBehavior.Restrict);
     }  
 }

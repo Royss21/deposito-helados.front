@@ -36,6 +36,7 @@ public class CategoryConfig : BaseEntityTypeConfig<Category, int>
 
         builder.HasMany(p => p.ProductCategories)
             .WithOne(p => p.Category)
-            .HasForeignKey( p => p.CategoryId);
+            .HasForeignKey( p => p.CategoryId)
+            ;
     }  
 }

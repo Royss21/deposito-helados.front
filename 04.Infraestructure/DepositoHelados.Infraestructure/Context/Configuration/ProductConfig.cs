@@ -32,26 +32,32 @@ public class ProductConfig : BaseEntityTypeConfig<Product, Guid>
 
         builder.HasMany(p => p.ProductArchives)
             .WithOne(p => p.Product)
-            .HasForeignKey( p => p.ProductId);
+            .HasForeignKey( p => p.ProductId)
+            ;
 
         builder.HasMany(p => p.OrderDetails)
             .WithOne(p => p.Product)
-            .HasForeignKey( p => p.ProductId);
+            .HasForeignKey( p => p.ProductId)
+            ;
 
         builder.HasMany(p => p.ProductCategories)
             .WithOne(p => p.Product)
-            .HasForeignKey( p => p.ProductId);
+            .HasForeignKey( p => p.ProductId)
+            ;
 
         builder.HasMany(p => p.ProductFlavors)
             .WithOne(p => p.Product)
-            .HasForeignKey( p => p.ProductId);
+            .HasForeignKey( p => p.ProductId)
+            ;
 
         builder.HasMany(p => p.ProductPrices)
             .WithOne(p => p.Product)
-            .HasForeignKey( p => p.ProductId);
+            .HasForeignKey( p => p.ProductId)
+            ;
 
         builder.HasMany(p => p.EmployeeProductOrderDetails)
             .WithOne(p => p.Product)
-            .HasForeignKey( p => p.ProductId);
+            .HasForeignKey( p => p.ProductId)
+            ;
     }  
 }
