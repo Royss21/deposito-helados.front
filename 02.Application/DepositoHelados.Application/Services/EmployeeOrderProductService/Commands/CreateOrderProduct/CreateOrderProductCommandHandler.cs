@@ -1,13 +1,12 @@
 ﻿using DepositoHelados.Application.Services.EmployeeOrderProductService.Dtos;
 using DepositoHelados.Application.Services.EmployeeOrderProductService.Shared;
-using DepositoHelados.Domain.Commons.Functions;
 using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
 
 namespace DepositoHelados.Application.Services.EmployeeOrderProductService.Commands.CreateOrderProduct;
 
-internal class CreateOrderProductCommand : BaseHandler, IRequestHandler<CreateOrderProductDto, bool>
+internal class CreateOrderProductCommandHandler : BaseHandler, IRequestHandler<CreateOrderProductDto, bool>
 {
-    public CreateOrderProductCommand(IUnitOfWork unitOfWork, IMapper mapper)
+    public CreateOrderProductCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         : base(unitOfWork, mapper)
     { }
 

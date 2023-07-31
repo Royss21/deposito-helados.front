@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Services\OrderService\" />
-    <Folder Include="Services\EmployeeOrderProductService\Queries\" />
     <Folder Include="Services\EmployeeOrderProductService\Validators\" />
   </ItemGroup>
 

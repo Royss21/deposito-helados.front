@@ -21,6 +21,11 @@ public interface IReadRepository<T> where T : class
         int? take = null,
         Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
 
+    IQueryable<T> GetAllProject(
+        Expression<Func<T, bool>> predicate = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        int? take = null);
+
     T Single(
         Expression<Func<T, bool>> predicate,
         Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);

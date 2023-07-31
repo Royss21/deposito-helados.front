@@ -1,4 +1,5 @@
 using DepositoHelados.Domain.Entities.CompanyAggregate;
+using DepositoHelados.Domain.Entities.OrderAggregate;
 using DepositoHelados.Domain.Entities.PersonAggregate;
 using DepositoHelados.Domain.Entities.ProductAggregate;
 
@@ -16,8 +17,11 @@ public class EmployeeOrderProduct : BaseAudit<int>, IAggregateRoot, IBaseCampus
     
     public virtual int PersonRoleId  { get; private set; }
     public virtual DateTime DateProductOrder  { get; private set; }
+    public virtual Guid? OrderId { get; private set; }
     public virtual int CampusId { get ; set ; }
-    
+
+
+    public virtual Order? Order { get; set; }
     public virtual Campus Campus { get ; set; }
     public virtual PersonRole PersonRole { get; private set; }
     public IEnumerable<EmployeeOrderProductDetail> EmployeeProductOrderDetails => _employeeProductOrderDetails.AsReadOnly();

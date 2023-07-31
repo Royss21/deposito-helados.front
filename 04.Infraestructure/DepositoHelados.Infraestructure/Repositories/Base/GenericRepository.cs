@@ -1,5 +1,4 @@
 ﻿using DepositoHelados.Domain.Commons.Paged;
-using DepositoHelados.Infraestructure.Context;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore.Query;
@@ -7,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace DepositoHelados.Infraestructure.Repositories.Base;
 
-public abstract class GenericRepository<T> where T : class
+public abstract class GenericRepository<T> where T : class 
 {
     protected ApplicationDbContext Context { get; }
     public GenericRepository(ApplicationDbContext context)
@@ -93,6 +92,19 @@ public abstract class GenericRepository<T> where T : class
         return query.Count();
     }
     #endregion
+
+    public virtual IQueryable<T> GetAllProject(
+        Expression<Func<T, bool>> predicate = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        int? take = null
+    )
+    {
+        var query = Context.Set<T>().AsQueryable();
+
+        query = PrepareQuery(query, predicate, null, orderBy, take);
+
+        return query.AsNoTracking();
+    }
 
     #region Get All
     public virtual IEnumerable<T> GetAll(

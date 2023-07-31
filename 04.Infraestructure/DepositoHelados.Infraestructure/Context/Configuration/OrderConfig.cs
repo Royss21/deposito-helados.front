@@ -39,5 +39,21 @@ public class OrderConfig : BaseEntityTypeConfig<Order, Guid>
         builder.HasOne(p => p.MdStatus)
             .WithMany(p => p.OrderStatus)
             .HasForeignKey( p => p.MdStatusId);
+
+        builder.HasMany(p => p.EmployeeOrderProducts)
+            .WithOne(p => p.Order)
+            .HasForeignKey(p => p.OrderId);
+
+        builder.HasMany(p => p.OrderDetails)
+            .WithOne(p => p.Order)
+            .HasForeignKey(p => p.OrderId);
+
+        builder.HasMany(p => p.PersonAmountAccounts)
+            .WithOne(p => p.Order)
+            .HasForeignKey(p => p.OrderId);
+
+        builder.HasMany(p => p.OrderAdvanceAmounts)
+           .WithOne(p => p.Order)
+           .HasForeignKey(p => p.OrderId);
     }  
 }

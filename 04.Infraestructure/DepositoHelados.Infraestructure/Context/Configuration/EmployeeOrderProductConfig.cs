@@ -17,6 +17,9 @@ public class EmployeeOrderProductConfig : BaseEntityTypeConfig<EmployeeOrderProd
         builder.Property(p => p.DateProductOrder)
             .IsRequired();
 
+        builder.Property(p => p.OrderId)
+            .IsRequired(false);
+
         builder.HasMany(p => p.EmployeeProductOrderDetails)
             .WithOne(p => p.EmployeeProductOrder)
             .HasForeignKey(p => p.EmployeeProductOrderId)
@@ -29,6 +32,10 @@ public class EmployeeOrderProductConfig : BaseEntityTypeConfig<EmployeeOrderProd
         builder.HasOne(p => p.PersonRole)
             .WithMany(p => p.EmployeeProductsOrders)
             .HasForeignKey( p => p.PersonRoleId);
+
+        builder.HasOne(p => p.Order)
+            .WithMany(p => p.EmployeeOrderProducts)
+            .HasForeignKey(p => p.OrderId);
 
     }  
 }
