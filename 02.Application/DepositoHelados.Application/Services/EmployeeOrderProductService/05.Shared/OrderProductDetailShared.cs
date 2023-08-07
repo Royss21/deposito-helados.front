@@ -1,6 +1,6 @@
-﻿namespace DepositoHelados.Application.Services.EmployeeOrderProductService.Dtos;
+﻿namespace DepositoHelados.Application.Services.EmployeeOrderProductService._01.Shared;
 
-public record OrderProductDetailDto 
+public record OrderProductDetailShared 
 {
     public Guid ProductId { get; set; }
     public int MdUnitMeasurementId { get; set; }

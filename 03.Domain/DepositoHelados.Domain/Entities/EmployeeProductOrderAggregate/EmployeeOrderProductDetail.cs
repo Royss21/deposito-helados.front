@@ -10,7 +10,7 @@ public class EmployeeOrderProductDetail : BaseAudit<int>
     {
         ProductId = productId;
         MdUnitMeasurementId = mdUnitMeasurementId;
-        Quantity = (quantity > 0) ? quantity : throw new EmployeeOrderProductException(Constants.QUANTITY_ZERO);
+        Quantity = (quantity > 0) ? quantity : throw new EmployeeOrderProductException(Constants.Messages.QUANTITY_ZERO);
     }
 
     public virtual int EmployeeProductOrderId { get; private set; }

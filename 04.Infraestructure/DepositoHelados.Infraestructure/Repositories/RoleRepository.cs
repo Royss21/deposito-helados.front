@@ -1,6 +1,4 @@
-﻿using DepositoHelados.Domain.Entities.RoleAggregate;
-
-namespace DepositoHelados.Infraestructure.Repositories;
+﻿namespace DepositoHelados.Infraestructure.Repositories;
 
 public class RoleRepository : GenericRepository<Role>, IRoleRepository
 {

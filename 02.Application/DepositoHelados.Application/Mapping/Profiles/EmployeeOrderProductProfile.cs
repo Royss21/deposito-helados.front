@@ -8,9 +8,9 @@ public class EmployeeOrderProductProfile : Profile
 {
     public EmployeeOrderProductProfile()
     {
-        CreateMap<EmployeeOrderProduct, GetOrderProductDto>()
+        CreateMap<EmployeeOrderProduct, GetOrderProductWithoutOrderDto>()
             .ForMember(x => x.DateOrderProduct, m => m.MapFrom(d => d.DateProductOrder))
-            .ForMember(x => x.ProductOrderItems, m => m.MapFrom(d => d.EmployeeProductOrderDetails.Select(s => new GetOrderProductDetailDto
+            .ForMember(x => x.ProductOrderItems, m => m.MapFrom(d => d.EmployeeProductOrderDetails.Select(s => new GetOrderProductWithoutOrderDetailDto
             {
                 Product = s.Product.Name,
                 UnitMeasurement = s.MdUnitMeasurement.Name,

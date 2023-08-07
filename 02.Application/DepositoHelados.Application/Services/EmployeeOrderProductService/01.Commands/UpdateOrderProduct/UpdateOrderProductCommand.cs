@@ -1,8 +1,6 @@
 ﻿using DepositoHelados.Application.Services.EmployeeOrderProductService.Dtos;
-using DepositoHelados.Application.Services.EmployeeOrderProductService.Shared;
-using DepositoHelados.Domain.Commons.Functions;
+using DepositoHelados.Application.Shared;
 using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
-using DepositoHelados.Domain.Entities.RoleAggregate;
 
 namespace DepositoHelados.Application.Services.EmployeeOrderProductService.Commands.UpdateOrderProduct;
 
@@ -25,11 +23,11 @@ internal class UpdateOrderProductCommand : BaseHandler, IRequestHandler<UpdateOr
             );
 
         if (orderProduct == null)
-            throw new EmployeeOrderProductException(Constants.ORDER_PRODUCT_NOT_EXISTS);
+            throw new EmployeeOrderProductException(Constants.Messages.ORDER_PRODUCT_NOT_EXISTS);
 
         if(orderProduct.PersonRole.PersonId != request.PersonId)
         {
-            var personRole = await SharedFunctions.GetPersonRole(request.PersonId, orderProduct.PersonRole.RoleId, _unitOfWork);
+            var personRole = await SharedFunctions.GetPersonRole(request.PersonId, Constants.Codes.ROLE_EMPLOYEE, _unitOfWork);
             orderProduct.SetPersonRoleId(personRole.Id);
         }
 
@@ -44,11 +42,7 @@ internal class UpdateOrderProductCommand : BaseHandler, IRequestHandler<UpdateOr
 
         foreach(var product in request.ProductOrderItems)
         {
-            orderProduct.AddOrUpdateProductItem(
-                    product.MdUnitMeasurementId, 
-                    product.Quantity, 
-                    product.ProductId
-                );
+            orderProduct.AddOrUpdateProductItem(new EmployeeOrderProductDetail(product.ProductId, product.MdUnitMeasurementId, product.Quantity));
         }
 
         _unitOfWork

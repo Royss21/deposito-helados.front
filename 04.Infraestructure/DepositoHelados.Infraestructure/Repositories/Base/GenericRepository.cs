@@ -348,20 +348,6 @@ public abstract class GenericRepository<T> where T : class
     }
     #endregion
 
-    public virtual async Task<TKey> GetIdByUUID<TKey>(
-        Expression<Func<T, bool>> predicate)
-    {
-        var entry = Context.Set<T>();
-        var query = entry.AsQueryable();
-
-        var primaryKeyName = Context.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties.Select(s => s.Name).Single();
-
-        query = PrepareQuery(query, predicate, null, null);
-        var primaryKey = (await query.Select(e => e.GetType().GetProperty(primaryKeyName).GetValue(e, null)).AsNoTracking().FirstOrDefaultAsync());
-
-        return primaryKey != null ? (TKey)primaryKey : default;
-    }
-
     public async Task<ValidationResult> ValidateEntityAsync ( T t,IValidator<T> validation)
     {
         var validationResultEntity = await validation.ValidateAsync(t);

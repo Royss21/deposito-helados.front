@@ -85,3 +85,4 @@ D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\DepositoHelados.Application.dll
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\DepositoHelados.Application.pdb
 D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\02.Proyectos\02.DepositosHelados\DepositoHelados.back\01.Api\DepositoHelados\obj\Debug\net7.0\DepositoHelados.MvcApplicationPartsAssemblyInfo.cs

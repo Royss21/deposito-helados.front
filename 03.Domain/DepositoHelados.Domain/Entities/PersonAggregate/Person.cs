@@ -1,4 +1,3 @@
-using DepositoHelados.Domain.Entities.CompanyAggregate;
 using DepositoHelados.Domain.Entities.MasterAggregate;
 
 namespace DepositoHelados.Domain.Entities.PersonAggregate;

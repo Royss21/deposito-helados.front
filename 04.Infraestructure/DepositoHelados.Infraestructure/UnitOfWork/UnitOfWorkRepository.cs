@@ -1,9 +1,4 @@
-﻿
-using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
-using DepositoHelados.Domain.Entities.PersonAggregate;
-using DepositoHelados.Domain.Entities.ProductAggregate;
-using DepositoHelados.Domain.Entities.RoleAggregate;
-using DepositoHelados.Infraestructure.Repositories;
+﻿using DepositoHelados.Infraestructure.Repositories;
 
 namespace DepositoHelados.Infraestructure.UnitOfWork;
 public class UnitOfWorkRepository : IUnitOfWorkRepository
@@ -12,12 +7,16 @@ public class UnitOfWorkRepository : IUnitOfWorkRepository
     public IProductRepository ProductRepository { get; }
     public IEmployeeOrderProductRepository EmployeeOrderProductRepository { get; }
     public IPersonRepository PersonRepository { get; }
+    public IMasterRepository MasterRepository { get; }
+    public IOrderRepository OrderRepository { get; }
 
     public UnitOfWorkRepository(ApplicationDbContext context)
 	{
         ProductRepository = new ProductRepository(context);
         PersonRepository = new PersonRepository(context);
         RoleRepository = new RoleRepository(context);
+        MasterRepository = new MasterRepository(context);
+        OrderRepository = new OrderRepository(context);
         EmployeeOrderProductRepository = new EmployeeOrderProductRepository(context);
     }
 }

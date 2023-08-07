@@ -12,7 +12,7 @@ public static class ProductController
             async (CreateProductDto product, IMediator _mediator) =>
             {
                 var result = await _mediator.Send(product);
-                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.SUCCESS_MESSAGE));
+                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.Messages.SUCCESS_MESSAGE));
             })
             .WithTags("Product");
     }

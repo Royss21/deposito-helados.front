@@ -13,7 +13,7 @@ public static class EmployeeOrderProductController
             async (CreateOrderProductDto request, IMediator _mediator) =>
             {
                 var result = await _mediator.Send(request);
-                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.SUCCESS_MESSAGE));
+                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.Messages.SUCCESS_MESSAGE));
             })
             .WithTags("OrderProduct");
 
@@ -21,15 +21,15 @@ public static class EmployeeOrderProductController
             async (UpdateOrderProductDto request, IMediator _mediator) =>
             {
                 var result = await _mediator.Send(request);
-                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.SUCCESS_MESSAGE));
+                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.Messages.SUCCESS_MESSAGE));
             })
             .WithTags("OrderProduct");
 
-        app.MapGet("order-product-without-order/person/{personId}",
+        app.MapGet("order-product/{personId}/without-order-relation",
             async (Guid personId, IMediator _mediator) =>
             {
                 var result = await _mediator.Send(new GetOrderProductWithoutOrderQuery { PersonId = personId});
-                return Results.Ok(new JsonSuccessResponse<List<GetOrderProductDto>>(result, Constants.SUCCESS_MESSAGE));
+                return Results.Ok(new JsonSuccessResponse<List<GetOrderProductWithoutOrderDto>>(result, Constants.Messages.SUCCESS_MESSAGE));
             })
             .WithTags("OrderProduct");
     }

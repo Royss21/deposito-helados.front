@@ -13,6 +13,7 @@ public static class Main
         //app.MapGet("/", (ApplicationSetting s) => $"{s.Environment}");
         ProductController.RegisterEndpoints(app);
         EmployeeOrderProductController.RegisterEndpoints(app);
+        OrderController.RegisterEndpoints(app);
 
         app.Run();
     }

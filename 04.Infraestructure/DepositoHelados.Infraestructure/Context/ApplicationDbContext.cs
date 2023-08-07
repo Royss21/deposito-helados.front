@@ -46,6 +46,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Order> Order { get; set; }
     public DbSet<OrderAdvanceAmount> OrderAdvanceAmount { get; set; }
     public DbSet<OrderDetail> OrderDetail { get; set; }
+    public DbSet<OrderTracking> OrderTracking { get; set; }
     public DbSet<PersonAmountAccount> AmountAccount { get; set; }
     public DbSet<Person> Person { get; set; }
     public DbSet<PersonAddress> PersonAddress { get; set; }
@@ -78,6 +79,7 @@ public class ApplicationDbContext : DbContext
             .ApplyConfiguration(new OrderAdvanceAmountConfig())
             .ApplyConfiguration(new OrderConfig())
             .ApplyConfiguration(new OrderDetailConfig())
+            .ApplyConfiguration(new OrderTrackingConfig())
             .ApplyConfiguration(new PersonAddressConfig())
             .ApplyConfiguration(new PersonConfig())
             .ApplyConfiguration(new PersonRoleConfig())
@@ -194,7 +196,7 @@ public class ApplicationDbContext : DbContext
         if (_httpContextAccessor.HttpContext is null)
         {
             var principalClaims = _httpContextAccessor?.HttpContext?.User;
-            currentUser = principalClaims?.FindFirst(Constants.CLAIM_USERNAME)?.Value ?? Constants.CURRENT_USER_DEFAULT;
+            currentUser = principalClaims?.FindFirst(Constants.Claims.CLAIM_USERNAME)?.Value ?? Constants.CURRENT_USER_DEFAULT;
         }
 
         return currentUser;
@@ -207,7 +209,7 @@ public class ApplicationDbContext : DbContext
         if (_httpContextAccessor.HttpContext is null)
         {
             var principalClaims = _httpContextAccessor?.HttpContext?.User;
-            companyId = principalClaims?.FindFirst(Constants.CLAIM_COMPANY)?.Value ?? string.Empty;
+            companyId = principalClaims?.FindFirst(Constants.Claims.CLAIM_COMPANY)?.Value ?? string.Empty;
         }
 
         return !string.IsNullOrWhiteSpace(companyId) ?  new Guid(companyId) : Guid.Empty;

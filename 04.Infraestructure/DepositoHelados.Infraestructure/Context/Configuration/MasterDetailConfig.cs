@@ -41,7 +41,10 @@ public class MasterDetailConfig : BaseEntityTypeConfig<MasterDetail, int>
 
         builder.HasMany(p => p.EmployeeProductOrderDetails)
             .WithOne(p => p.MdUnitMeasurement)
-            .HasForeignKey( p => p.MdUnitMeasurementId)
-            ;
+            .HasForeignKey( p => p.MdUnitMeasurementId);
+
+        builder.HasMany(p => p.OrderTrackings)
+            .WithOne(p => p.MdStatus)
+            .HasForeignKey(p => p.MdStatusId);
     }  
 }

@@ -1,8 +1,3 @@
-
-
-using DepositoHelados.Domain.Entities.PersonAggregate;
-
-
 namespace DepositoHelados.Infraestructure.Context.Configuration;
 
 public class PersonRoleConfig : BaseEntityTypeConfig<PersonRole, int>
@@ -39,7 +34,6 @@ public class PersonRoleConfig : BaseEntityTypeConfig<PersonRole, int>
 
         builder.HasMany(p => p.EmployeeProductsOrders)
             .WithOne(p => p.PersonRole)
-            .HasForeignKey( p => p.PersonRoleId)
-            ;
+            .HasForeignKey( p => p.PersonRoleId);
     }  
 }

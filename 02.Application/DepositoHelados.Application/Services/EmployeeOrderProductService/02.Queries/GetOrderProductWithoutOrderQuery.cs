@@ -2,7 +2,7 @@
 
 namespace DepositoHelados.Application.Services.EmployeeOrderProductService.Queries
 {
-    public record GetOrderProductWithoutOrderQuery : IRequest<List<GetOrderProductDto>>
+    public record GetOrderProductWithoutOrderQuery : IRequest<List<GetOrderProductWithoutOrderDto>>
     {
         public Guid PersonId { get; set; }
     }

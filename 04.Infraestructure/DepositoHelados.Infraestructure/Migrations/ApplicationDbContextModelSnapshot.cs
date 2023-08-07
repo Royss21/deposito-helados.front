@@ -745,6 +745,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("AmountReceived")
+                        .HasColumnType("money");
+
                     b.Property<int>("CampusId")
                         .HasColumnType("int");
 
@@ -907,6 +910,9 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
+                    b.Property<bool>("IsAmountCalculate")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -923,9 +929,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasDefaultValue("system");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
@@ -948,6 +951,67 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetail");
+                });
+
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.OrderAggregate.OrderTracking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreateUser")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteUser")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("MdStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifyUser")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("system");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MdStatusId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderTracking");
                 });
 
             modelBuilder.Entity("DepositoHelados.Domain.Entities.PersonAggregate.Person", b =>
@@ -1149,9 +1213,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MdStatusId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 
@@ -1166,8 +1227,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MdStatusId");
 
                     b.HasIndex("OrderId");
 
@@ -2101,6 +2160,25 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("DepositoHelados.Domain.Entities.OrderAggregate.OrderTracking", b =>
+                {
+                    b.HasOne("DepositoHelados.Domain.Entities.MasterAggregate.MasterDetail", "MdStatus")
+                        .WithMany("OrderTrackings")
+                        .HasForeignKey("MdStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DepositoHelados.Domain.Entities.OrderAggregate.Order", "Order")
+                        .WithMany("OrderTrackings")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("MdStatus");
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("DepositoHelados.Domain.Entities.PersonAggregate.Person", b =>
                 {
                     b.HasOne("DepositoHelados.Domain.Entities.CompanyAggregate.Company", "Company")
@@ -2141,12 +2219,6 @@ namespace DepositoHelados.Infraestructure.Migrations
 
             modelBuilder.Entity("DepositoHelados.Domain.Entities.PersonAggregate.PersonAmountAccount", b =>
                 {
-                    b.HasOne("DepositoHelados.Domain.Entities.MasterAggregate.MasterDetail", "MdStatus")
-                        .WithMany("PersonAmountAcounts")
-                        .HasForeignKey("MdStatusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DepositoHelados.Domain.Entities.OrderAggregate.Order", "Order")
                         .WithMany("PersonAmountAccounts")
                         .HasForeignKey("OrderId");
@@ -2156,8 +2228,6 @@ namespace DepositoHelados.Infraestructure.Migrations
                         .HasForeignKey("PersonRoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("MdStatus");
 
                     b.Navigation("Order");
 
@@ -2420,9 +2490,9 @@ namespace DepositoHelados.Infraestructure.Migrations
 
                     b.Navigation("OrderStatus");
 
-                    b.Navigation("PersonAddresses");
+                    b.Navigation("OrderTrackings");
 
-                    b.Navigation("PersonAmountAcounts");
+                    b.Navigation("PersonAddresses");
 
                     b.Navigation("Persons");
 
@@ -2445,6 +2515,8 @@ namespace DepositoHelados.Infraestructure.Migrations
                     b.Navigation("OrderAdvanceAmounts");
 
                     b.Navigation("OrderDetails");
+
+                    b.Navigation("OrderTrackings");
 
                     b.Navigation("PersonAmountAccounts");
                 });

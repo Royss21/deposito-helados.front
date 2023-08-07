@@ -9,23 +9,23 @@ namespace DepositoHelados.Domain.Entities.MasterAggregate;
 
 public class MasterDetail: BaseAudit<int>
 {
-    public MasterDetail(
-            int id,
-            string code, 
-            string name, 
-            string description, 
-            string additionalOne,
-            string additionalTwo,
-            int sort)
-    {
-        Id = id;
-        Code = code;
-        Name = name;    
-        Description = description;  
-        AdditionalOne = additionalOne;
-        AdditionalTwo = additionalTwo;
-        Sort = sort;
-    }
+    //public MasterDetail(
+    //        int id,
+    //        string code, 
+    //        string name, 
+    //        string description, 
+    //        string additionalOne,
+    //        string additionalTwo,
+    //        int sort)
+    //{
+    //    Id = id;
+    //    Code = code;
+    //    Name = name;    
+    //    Description = description;  
+    //    AdditionalOne = additionalOne;
+    //    AdditionalTwo = additionalTwo;
+    //    Sort = sort;
+    //}
 
     private readonly List<EmployeeOrderProductDetail> _employeeProductOrderDetails = new();
     private readonly List<Order> _orderOrderTypes = new();
@@ -37,7 +37,7 @@ public class MasterDetail: BaseAudit<int>
     private readonly List<ProductPrice> _productPrices = new();
     private readonly List<PersonAddress> _personAddresses = new();
     private readonly List<OrderDetail> _orderDetailUnitMeasurements = new();
-    private readonly List<PersonAmountAccount> _personAmountAccounts = new();
+    private readonly List<OrderTracking> _orderTrackings = new();
 
     public virtual Guid MasterId { get; private set; }
     public virtual string Code { get; private set; } = string.Empty;
@@ -48,7 +48,7 @@ public class MasterDetail: BaseAudit<int>
     public virtual int Sort { get; private set; }
 
 
-   public virtual Master Master { get; private set; }
+    public virtual Master Master { get;  set; }
     public IEnumerable<EmployeeOrderProductDetail> EmployeeProductOrderDetails => _employeeProductOrderDetails.AsReadOnly();
     public IEnumerable<Order> OrderOrderTypes => _orderOrderTypes.AsReadOnly();
     public IEnumerable<Order> OrderStatus => _orderStatus.AsReadOnly();
@@ -59,7 +59,7 @@ public class MasterDetail: BaseAudit<int>
     public IEnumerable<ProductFlavor> ProductFlavors => _productFlavors.AsReadOnly();
     public IEnumerable<PersonAddress> PersonAddresses => _personAddresses.AsReadOnly();
     public IEnumerable<OrderDetail> OrderDetailUnitMeasurements => _orderDetailUnitMeasurements.AsReadOnly();
-    public IEnumerable<PersonAmountAccount> PersonAmountAcounts => _personAmountAccounts.AsReadOnly();
+    public IEnumerable<OrderTracking> OrderTrackings => _orderTrackings.AsReadOnly();
 
 
     public void SetMasterId(Guid masterId) => MasterId = masterId;

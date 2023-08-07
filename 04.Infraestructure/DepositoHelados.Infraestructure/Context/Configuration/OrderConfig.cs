@@ -55,5 +55,9 @@ public class OrderConfig : BaseEntityTypeConfig<Order, Guid>
         builder.HasMany(p => p.OrderAdvanceAmounts)
            .WithOne(p => p.Order)
            .HasForeignKey(p => p.OrderId);
+
+        builder.HasMany(p => p.OrderTrackings)
+           .WithOne(p => p.Order)
+           .HasForeignKey(p => p.OrderId);
     }  
 }

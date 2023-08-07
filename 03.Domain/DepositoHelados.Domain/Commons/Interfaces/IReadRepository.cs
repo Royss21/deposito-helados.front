@@ -69,6 +69,4 @@ public interface IReadRepository<T> where T : class
     Task<decimal?> SumAsync(Expression<Func<T, bool>> predicate = null);
     decimal? Sum(Expression<Func<T, bool>> predicate = null);
 
-    Task<TKey> GetIdByUUID<TKey>(
-        Expression<Func<T, bool>> predicate);
 }

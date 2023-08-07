@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\OrderService\" />
-    <Folder Include="Services\EmployeeOrderProductService\Validators\" />
+    <Folder Include="Services\EmployeeOrderProductService\04.Validators\" />
+    <Folder Include="Services\OrderService\04.Validators\" />
   </ItemGroup>
 
 </Project>

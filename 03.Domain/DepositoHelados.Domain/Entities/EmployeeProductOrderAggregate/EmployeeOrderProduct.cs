@@ -1,7 +1,6 @@
 using DepositoHelados.Domain.Entities.CompanyAggregate;
 using DepositoHelados.Domain.Entities.OrderAggregate;
 using DepositoHelados.Domain.Entities.PersonAggregate;
-using DepositoHelados.Domain.Entities.ProductAggregate;
 
 namespace DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
 
@@ -32,15 +31,15 @@ public class EmployeeOrderProduct : BaseAudit<int>, IAggregateRoot, IBaseCampus
     public void SetDateProductOrder(DateTime dateProductOrder) => DateProductOrder = dateProductOrder;
 
     
-    public void AddOrUpdateProductItem(int mdUnitMeasurementId, int quantity, Guid productId)
+    public void AddOrUpdateProductItem(EmployeeOrderProductDetail orderProductItem)
     {
         var productItem = _employeeProductOrderDetails
-             .FirstOrDefault(f => f.ProductId.Equals(productId) && f.MdUnitMeasurementId == mdUnitMeasurementId);
+             .FirstOrDefault(f => f.ProductId.Equals(orderProductItem.ProductId) && f.MdUnitMeasurementId == orderProductItem.MdUnitMeasurementId);
 
         if (productItem is null)
-            _employeeProductOrderDetails.Add(new EmployeeOrderProductDetail(productId, mdUnitMeasurementId, quantity));
+            _employeeProductOrderDetails.Add(orderProductItem);
         else
-            productItem.SetQuantity(quantity);
+            productItem.SetQuantity(orderProductItem.Quantity);
     }
 
     public void RemoveProductItem(EmployeeOrderProductDetail productItem)

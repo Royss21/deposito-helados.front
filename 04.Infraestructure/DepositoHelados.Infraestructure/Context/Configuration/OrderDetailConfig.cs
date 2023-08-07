@@ -27,9 +27,6 @@ public class OrderDetailConfig : BaseEntityTypeConfig<OrderDetail, int>
         builder.Property(p => p.ProductPrice)
             .IsRequired();
 
-        builder.Property(p => p.OrderDate)
-            .IsRequired();
-
         builder.HasOne(p  => p.Order)
             .WithMany(p => p.OrderDetails)
             .HasForeignKey(p => p.OrderId);

@@ -69,11 +69,30 @@ INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [A
 INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (53, N'6e1b3ca6-cee4-42ae-a9c2-42143da2df8e', N'DOCIDENT02', N'PASS', N'Pasaporte', N'DOCIDENT', N'', 2, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
 INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (54, N'6e1b3ca6-cee4-42ae-a9c2-42143da2df8e', N'DOCIDENT03', N'CEX', N'Carnet de Extranjeria', N'DOCIDENT', N'', 3, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
 INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (55, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE01', N'Imagen', N'', N'FILE', N'', 1, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
-INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (56, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE01', N'Documento Word', N'', N'FILE', N'', 2, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
-INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (57, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE01', N'Documento Excel', N'', N'FILE', N'', 3, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
-INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (58, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE01', N'Documento Pdf', N'', N'FILE', N'', 4, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
+INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (56, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE02', N'Documento Word', N'', N'FILE', N'', 2, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
+INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (57, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE03', N'Documento Excel', N'', N'FILE', N'', 3, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
+INSERT [dbo].[MasterDetail] ([Id], [MasterId], [Code], [Name], [Description], [AdditionalOne], [AdditionalTwo], [Sort], [CreateUser], [CreateDate], [ModifyUser], [ModifyDate], [DeleteUser], [DeleteDate], [IsDeleted], [IsActive]) VALUES (58, N'19cdc88f-70e5-4af3-8df9-ea95bfa30938', N'FILE04', N'Documento Pdf', N'', N'FILE', N'', 4, N'', CAST(N'0001-01-01T00:00:00.0000000' AS DateTime2), N'', NULL, N'', NULL, 0, 0)
 
 
+insert into [Master]
+(id, Code, Name, Description, CompanyId, CreateDate)
+values
+('EACC34D4-4C32-470A-A427-A3D4684C1841', 'TYPEORDER', 'TypeOrder', 'Tabla donde se guarda los tipos de pedidos', '65C3C91F-9DC0-44EB-895D-E573170E24A6', GETDATE()),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS', 'Status', 'Tabla para guardar los estados', '65C3C91F-9DC0-44EB-895D-E573170E24A6', GETDATE())
+
+
+
+insert into MasterDetail
+(MasterId, Code, Name, Description, AdditionalOne, AdditionalTwo, CreateDate, Sort)
+values
+('EACC34D4-4C32-470A-A427-A3D4684C1841', 'TYPEORDER01', 'Pedidos de Empleado', '','TYPEORDER', '', getdate(), 1),
+('EACC34D4-4C32-470A-A427-A3D4684C1841', 'TYPEORDER02', 'Pedidos de Cliente', '','TYPEORDER', '', getdate(), 2),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS01', 'Registrado', '','STATUS', '', getdate(), 1),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS02', 'Pagado', '','STATUS', '', getdate(), 2),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS03', 'Pendiente de Pago', '','STATUS', '', getdate(), 3),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS04', 'Terminado', '','STATUS', '', getdate(), 4),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS05', 'Cancelado', '','STATUS', '', getdate(), 5),
+('DAB0BDA8-D8CE-479C-A11A-83E18B73E4F7', 'STATUS06', 'Anulado', '','STATUS', '', getdate(), 6)
 
 GO
 

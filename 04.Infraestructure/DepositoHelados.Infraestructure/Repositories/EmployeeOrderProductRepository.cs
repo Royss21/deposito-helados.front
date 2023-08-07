@@ -1,6 +1,4 @@
-﻿using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
-
-namespace DepositoHelados.Infraestructure.Repositories;
+﻿namespace DepositoHelados.Infraestructure.Repositories;
 
 public class EmployeeOrderProductRepository : GenericRepository<EmployeeOrderProduct>, IEmployeeOrderProductRepository
 {
