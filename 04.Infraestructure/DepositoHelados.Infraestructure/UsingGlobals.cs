@@ -1,0 +1,13 @@
+﻿global using DepositoHelados.Domain.Commons;
+global using DepositoHelados.Domain.Commons.Functions;
+global using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
+global using DepositoHelados.Domain.Entities.MasterAggregate;
+global using DepositoHelados.Domain.Entities.OrderAggregate;
+global using DepositoHelados.Domain.Entities.PersonAggregate;
+global using DepositoHelados.Domain.Entities.ProductAggregate;
+global using DepositoHelados.Domain.Entities.RoleAggregate;
+global using DepositoHelados.Infraestructure.Context;
+global using DepositoHelados.Infraestructure.Context.Base;
+global using DepositoHelados.Infraestructure.Repositories.Base;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
