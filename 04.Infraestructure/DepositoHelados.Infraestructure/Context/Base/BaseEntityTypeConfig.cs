@@ -41,8 +41,5 @@ public abstract class BaseEntityTypeConfig<TEntity, TId>
 
         builder.Property(p => p.IsDeleted)
             .HasDefaultValue(false);
-
-        builder.Property(p => p.IsActive)
-            .HasDefaultValue(true);
     }
 }

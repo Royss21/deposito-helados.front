@@ -125,6 +125,7 @@ public class ApplicationDbContext : DbContext
                 case EntityState.Added:
                     entity.CreateDate = currentDate;
                     entity.CreateUser = _currentUser;
+                    entity.IsActive= true;
 
                     break;
                 case EntityState.Unchanged:

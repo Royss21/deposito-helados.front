@@ -3,6 +3,7 @@
 namespace DepositoHelados.Infraestructure.UnitOfWork;
 public class UnitOfWorkRepository : IUnitOfWorkRepository
 {
+    public ICategoryRepository CategoryRepository { get; }
     public IRoleRepository RoleRepository { get; }
     public IProductRepository ProductRepository { get; }
     public IEmployeeOrderProductRepository EmployeeOrderProductRepository { get; }
@@ -12,6 +13,7 @@ public class UnitOfWorkRepository : IUnitOfWorkRepository
 
     public UnitOfWorkRepository(ApplicationDbContext context)
 	{
+        CategoryRepository = new CategoryRepository(context);
         ProductRepository = new ProductRepository(context);
         PersonRepository = new PersonRepository(context);
         RoleRepository = new RoleRepository(context);

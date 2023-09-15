@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Services\CategoryService\01.Commands\UpdateCategory\" />
+    <Folder Include="Services\CategoryService\04.Validators\" />
+    <Folder Include="Services\CategoryService\02.Queries\" />
     <Folder Include="Services\EmployeeOrderProductService\04.Validators\" />
     <Folder Include="Services\OrderService\04.Validators\" />
   </ItemGroup>

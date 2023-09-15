@@ -1,9 +1,12 @@
 ﻿
 
+
+
 namespace DepositoHelados.Infraestructure.UnitOfWork;
 
 public interface IUnitOfWorkRepository
 {
+    ICategoryRepository CategoryRepository { get; }
     IProductRepository ProductRepository { get; }
     IPersonRepository PersonRepository { get; }
     IRoleRepository RoleRepository { get; }

@@ -5,9 +5,9 @@ using DepositoHelados.Domain.Entities.ProductAggregate;
 
 namespace DepositoHelados.Application.Services.ProductService.Commands.CreateProduct;
 
-internal class CreateProductCommand : BaseHandler, IRequestHandler<CreateProductDto, bool>
+internal class CreateProductCommandHandler : BaseHandler, IRequestHandler<CreateProductDto, bool>
 {
-    public CreateProductCommand(IUnitOfWork unitOfWork, IMapper  mapper) 
+    public CreateProductCommandHandler(IUnitOfWork unitOfWork, IMapper  mapper) 
         : base(unitOfWork, mapper)
     { }
 

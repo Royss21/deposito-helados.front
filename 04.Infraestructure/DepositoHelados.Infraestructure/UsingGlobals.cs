@@ -1,5 +1,6 @@
 ﻿global using DepositoHelados.Domain.Commons;
 global using DepositoHelados.Domain.Commons.Functions;
+global using DepositoHelados.Domain.Entities.CategoryAggregate;
 global using DepositoHelados.Domain.Entities.EmployeeProductOrderAggregate;
 global using DepositoHelados.Domain.Entities.MasterAggregate;
 global using DepositoHelados.Domain.Entities.OrderAggregate;

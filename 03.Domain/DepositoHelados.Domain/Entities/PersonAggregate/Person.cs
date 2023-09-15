@@ -15,6 +15,7 @@ public class Person : BaseAuditCompany<Guid>, IAggregateRoot
     public virtual string IdentityDocument  { get; private set; }  = string.Empty;
     public virtual string Email  { get; private set; } = string.Empty;
     public virtual string PhoneNumber   { get; private set; } = string.Empty;
+    public virtual string DateBirthday { get; private set; } = string.Empty;
     public virtual int MdIdentityDocumentTypeId { get; private set; } 
 
 

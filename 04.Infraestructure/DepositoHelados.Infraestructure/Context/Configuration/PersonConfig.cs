@@ -39,6 +39,10 @@ public class PersonConfig : BaseEntityTypeConfig<Person, Guid>
             .HasMaxLength(20)
             .IsRequired();
 
+        builder.Property(p => p.DateBirthday)
+            .HasMaxLength(20)
+            .IsRequired();
+
         builder.Property(p  => p.MdIdentityDocumentTypeId)
             .IsRequired();
 

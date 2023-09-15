@@ -15,5 +15,13 @@ public static class OrderController
                 return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.Messages.SUCCESS_MESSAGE));
             })
             .WithTags("Order");
+
+        app.MapPut($"order/",
+            async (UpdateOrderDto request, IMediator _mediator) =>
+            {
+                var result = await _mediator.Send(request);
+                return Results.Ok(new JsonSuccessResponse<bool>(result, Constants.Messages.SUCCESS_MESSAGE));
+            })
+            .WithTags("Order");
     }
 }

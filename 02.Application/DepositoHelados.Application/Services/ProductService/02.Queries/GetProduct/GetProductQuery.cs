@@ -1,6 +1,6 @@
 ﻿namespace DepositoHelados.Application.Services.ProductService.Queries.GetProduct
 {
-    internal class ProductQueryHandler
+    internal class ProductQuery
     {
     }
 }
